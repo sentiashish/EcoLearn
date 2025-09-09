@@ -8,7 +8,7 @@ interface Question {
 }
 
 interface EcoQuizProps {
-  onComplete?: (result: { score: number; xpEarned: number; timeSpent: number; accuracy: number }) => void;
+  onComplete?: (result: { score: number; points: number; xpEarned: number; timeSpent: number; accuracy: number }) => void;
   onClose?: () => void;
 }
 
@@ -33,7 +33,7 @@ const questions: Question[] = [
   },
   {
     question: "Which of these materials takes the longest to decompose in nature?",
-    options: ["Paper (2-6 weeks)", "Aluminum can (200-500 years)", "Plastic bottle (450 years)", "Glass bottle (1 million years)"],
+    options: ["Paper", "Aluminum can", "Plastic bottle", "Glass bottle"],
     answer: 3,
     fact: "Glass takes up to 1 million years to decompose in the environment. However, glass is 100% recyclable and can be recycled endlessly without loss in quality or purity."
   },
@@ -79,6 +79,7 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
   const [currentScreen, setCurrentScreen] = useState<'start' | 'quiz' | 'result'>('start');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [points, setPoints] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showFact, setShowFact] = useState(false);
   const [startTime] = useState(Date.now());
@@ -87,6 +88,7 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
     setCurrentScreen('quiz');
     setCurrentQuestionIndex(0);
     setScore(0);
+    setPoints(0);
     setSelectedOption(null);
     setShowFact(false);
   };
@@ -98,7 +100,9 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
     
     if (optionIndex === questions[currentQuestionIndex].answer) {
       setScore(score + 1);
+      setPoints(points + 10); // Add 10 points for correct answer
     }
+    // No points added for wrong answer (0 points)
     
     setShowFact(true);
   };
@@ -121,7 +125,7 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
     setCurrentScreen('result');
     
     if (onComplete) {
-      onComplete({ score, xpEarned, timeSpent, accuracy });
+      onComplete({ score, points, xpEarned, timeSpent, accuracy });
     }
   };
 
@@ -129,6 +133,7 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
     setCurrentScreen('start');
     setCurrentQuestionIndex(0);
     setScore(0);
+    setPoints(0);
     setSelectedOption(null);
     setShowFact(false);
   };
@@ -143,7 +148,15 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
         <div className="p-8 text-center">
           <div className="text-6xl mb-4">🎯</div>
           <h2 className="text-xl font-semibold mb-2 text-gray-800">Ready to Test Your Environmental Knowledge?</h2>
-          <p className="text-gray-600 mb-8">Answer 10 questions about environmental topics and earn XP!</p>
+          <p className="text-gray-600 mb-4">Answer 10 questions about environmental topics and earn XP!</p>
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-8">
+            <h3 className="font-semibold text-green-800 mb-2">Scoring System:</h3>
+            <p className="text-green-700 text-sm">
+              • Correct Answer: <span className="font-bold">+10 points</span><br/>
+              • Wrong Answer: <span className="font-bold">0 points</span><br/>
+              • Maximum Score: <span className="font-bold">{questions.length * 10} points</span>
+            </p>
+          </div>
           <button
             onClick={startGame}
             className="bg-gradient-to-r from-green-500 to-blue-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
@@ -172,7 +185,10 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
         <div className="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6">
           <div className="flex justify-between items-center mb-4">
             <h1 className="text-xl font-bold">EcoKnowledge Quiz</h1>
-            <span className="text-green-100">Question {currentQuestionIndex + 1} of {questions.length}</span>
+            <div className="text-right">
+              <span className="text-green-100">Question {currentQuestionIndex + 1} of {questions.length}</span>
+              <div className="text-lg font-semibold">Points: {points}</div>
+            </div>
           </div>
           <div className="w-full bg-green-300 rounded-full h-2">
             <div 
@@ -250,10 +266,14 @@ const EcoQuiz: React.FC<EcoQuizProps> = ({ onComplete, onClose }) => {
         </div>
 
         <div className="p-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600">{score}</div>
               <div className="text-sm text-gray-600">Correct Answers</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-orange-600">{points}</div>
+              <div className="text-sm text-gray-600">Total Points</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600">{accuracy.toFixed(1)}%</div>
