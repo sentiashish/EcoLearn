@@ -1962,3 +1962,48 @@ INFO 2025-09-09 22:17:20,566 basehttp 12976 8956 "GET /api/v1/users/me/ HTTP/1.1
 INFO 2025-09-09 22:17:20,597 basehttp 12976 8956 "GET /api/v1/users/me/ HTTP/1.1" 200 537
 INFO 2025-09-09 22:18:54,615 basehttp 12976 5836 "GET /api/v1/users/me/ HTTP/1.1" 200 537
 INFO 2025-09-09 22:18:54,674 basehttp 12976 5836 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:22:31,132 basehttp 12976 23096 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:22:31,153 basehttp 12976 23096 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:24:59,950 basehttp 12976 25224 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:24:59,974 basehttp 12976 25224 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:37:06,690 basehttp 12976 25852 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:37:06,707 basehttp 12976 25852 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:45:02,557 basehttp 12976 2212 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:45:02,677 basehttp 12976 2212 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:55:42,659 basehttp 12976 24000 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:55:42,680 basehttp 12976 24000 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:58:25,403 autoreload 12976 26796 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-09 22:58:30,213 autoreload 19392 22044 Watching for file changes with StatReloader
+INFO 2025-09-09 22:58:49,091 autoreload 19392 22044 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\serializers.py changed, reloading.
+INFO 2025-09-09 22:58:51,042 autoreload 26716 17260 Watching for file changes with StatReloader
+INFO 2025-09-09 22:59:31,571 autoreload 26716 17260 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\views.py changed, reloading.
+INFO 2025-09-09 22:59:33,483 autoreload 11428 3644 Watching for file changes with StatReloader
+INFO 2025-09-09 22:59:59,870 autoreload 11428 3644 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\urls.py changed, reloading.
+INFO 2025-09-09 23:00:01,882 autoreload 2636 28064 Watching for file changes with StatReloader
+INFO 2025-09-09 23:05:03,847 autoreload 27836 12880 Watching for file changes with StatReloader
+INFO 2025-09-09 23:07:36,829 autoreload 27380 25800 Watching for file changes with StatReloader
+INFO 2025-09-09 23:07:39,909 basehttp 27380 11080 "GET / HTTP/1.1" 200 328
+WARNING 2025-09-09 23:07:44,921 log 27380 23768 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 23:07:44,921 basehttp 27380 23768 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 23:07:44,937 log 27380 23768 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 23:07:44,938 basehttp 27380 23768 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 23:07:45,598 log 27380 12836 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 23:07:45,609 log 27380 23768 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 23:07:45,609 basehttp 27380 12836 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-09 23:07:45,613 basehttp 27380 23768 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-09 23:08:02,684 basehttp 27380 25984 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 23:18:47,996 autoreload 27380 25800 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-09 23:18:50,687 autoreload 26576 8956 Watching for file changes with StatReloader
+INFO 2025-09-09 23:18:59,679 autoreload 26576 8956 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\views.py changed, reloading.
+INFO 2025-09-09 23:19:01,561 autoreload 5172 2672 Watching for file changes with StatReloader
+INFO 2025-09-09 23:19:59,111 autoreload 25248 6448 Watching for file changes with StatReloader
+INFO 2025-09-09 23:22:24,142 autoreload 28356 25584 Watching for file changes with StatReloader
+INFO 2025-09-09 23:22:38,659 basehttp 28356 16968 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 23:32:49,127 autoreload 4936 18224 Watching for file changes with StatReloader
+INFO 2025-09-09 23:38:57,143 autoreload 26596 12244 Watching for file changes with StatReloader
+INFO 2025-09-10 00:28:18,018 autoreload 26596 12244 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-10 00:28:22,281 autoreload 27712 21448 Watching for file changes with StatReloader
+INFO 2025-09-10 00:28:25,902 autoreload 27712 21448 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-10 00:28:27,609 autoreload 26252 25044 Watching for file changes with StatReloader
+INFO 2025-09-10 00:35:54,238 autoreload 26252 25044 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-10 00:35:56,867 autoreload 13104 26904 Watching for file changes with StatReloader

@@ -23,7 +23,7 @@ const allScenarios = [
     text: "A major company wants to build a new factory on the edge of the forest. The factory would bring jobs but also pollution. What do you do?",
     image: scenarioImages[1],
     choices: [
-      { text: "Negotiate with the company for strict environmental standards and a smaller footprint.", outcome: { water: 5, health: 5, wildlife: 5 }, result: "You reached a compromise. The factory will be built, but with minimal environmental impact." },
+      { text: "Negotiate with the company for strict environmental standards                                                                                                                                                                                         a smaller footprint.", outcome: { water: 5, health: 5, wildlife: 5 }, result: "You reached a compromise. The factory will be built, but with minimal environmental impact." },
       { text: "Accept the proposal as is to boost the local economy.", outcome: { water: -20, health: -20 }, result: "The factory's waste has started to pollute the air and water around the forest." },
       { text: "Organize protests to block the construction completely.", outcome: { water: 10, health: 10, wildlife: 10 }, result: "The protests succeeded in stopping the factory, preserving the forest but at the cost of local jobs." }
     ]
