@@ -42,14 +42,6 @@ export const useUserProfile = () => {
   });
 };
 
-export const useUserStats = () => {
-  return useQuery({
-    queryKey: ['user', 'stats'],
-    queryFn: apiService.getUserStats,
-    staleTime: 2 * 60 * 1000, // 2 minutes
-  });
-};
-
 export const useUpdateProfile = () => {
   const queryClient = useQueryClient();
   

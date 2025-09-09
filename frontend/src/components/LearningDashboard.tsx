@@ -28,6 +28,7 @@ import InteractiveQuiz from './InteractiveQuiz';
 import ProgressTracker from './ProgressTracker';
 import EnvironmentalMiniGames, { GameResult } from './EnvironmentalMiniGames';
 import EcosystemBuilder from './EcosystemBuilder';
+import EcoSurvivalChallenge from './EcoSurvivalChallenge';
 
 interface UserStats {
   level: number;
@@ -220,6 +221,14 @@ const LearningDashboard: React.FC<LearningDashboardProps> = ({ onClose }) => {
           onComplete={(result) => handleGameComplete('ecosystem-builder', result)} 
           onClose={() => setSelectedGame(null)} 
         />
+      </div>
+    );
+  }
+
+  if (selectedGame === 'eco-survival-challenge') {
+    return (
+      <div className="min-h-screen bg-gray-50 p-4">
+        <EcoSurvivalChallenge onClose={() => setSelectedGame(null)} />
       </div>
     );
   }
@@ -461,6 +470,19 @@ const LearningDashboard: React.FC<LearningDashboardProps> = ({ onClose }) => {
                     <p className="text-sm text-gray-500">Create & simulate</p>
                   </div>
                 </button>
+
+                <button
+                  onClick={() => setSelectedGame('eco-survival-challenge')}
+                  className="flex items-center gap-3 p-4 border border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-all"
+                >
+                  <div className="w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center">
+                    <PlayIcon className="h-6 w-6 text-white" />
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium text-gray-900">Eco-Survival Challenge</p>
+                    <p className="text-sm text-gray-500">Play the new survival game</p>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
@@ -567,6 +589,38 @@ const LearningDashboard: React.FC<LearningDashboardProps> = ({ onClose }) => {
                   </div>
                   <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition-colors">
                     Build Ecosystem
+                  </button>
+                </div>
+              </motion.div>
+
+              {/* Eco Survival Challenge */}
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+                onClick={() => setSelectedGame('eco-survival-challenge')}
+              >
+                <div className="bg-gradient-to-r from-emerald-500 to-green-500 p-6 text-white">
+                  <div className="text-4xl mb-2">🌲</div>
+                  <h3 className="text-xl font-bold">Eco-Survival Challenge</h3>
+                  <p className="opacity-90">Make choices, save the forest!</p>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Difficulty:</span>
+                      <span className="font-medium text-green-600">Story</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">Duration:</span>
+                      <span className="font-medium">5-10 min</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600">XP Reward:</span>
+                      <span className="font-medium text-blue-600">100 XP</span>
+                    </div>
+                  </div>
+                  <button className="w-full mt-4 bg-emerald-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+                    Play Now
                   </button>
                 </div>
               </motion.div>

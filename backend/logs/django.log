@@ -1693,3 +1693,261 @@ INFO 2025-09-09 14:36:57,907 autoreload 11368 16812 C:\Users\aswin\Documents\Sih
 INFO 2025-09-09 14:37:00,577 autoreload 28184 26300 Watching for file changes with StatReloader
 INFO 2025-09-09 14:37:03,191 autoreload 28184 26300 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
 INFO 2025-09-09 14:37:05,164 autoreload 19136 16476 Watching for file changes with StatReloader
+INFO 2025-09-09 14:37:07,683 basehttp 19136 14880 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:37:07,715 basehttp 19136 18088 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:37:07,796 basehttp 19136 14880 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:37:09,526 basehttp 19136 18088 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:37:09,541 basehttp 19136 14880 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:37:09,545 basehttp 19136 18088 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:49:46,631 basehttp 19136 24796 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 14:49:46,631 basehttp 19136 27896 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 14:49:46,864 basehttp 19136 27896 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:49:46,880 basehttp 19136 27896 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:50:51,681 basehttp 19136 25532 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:50:51,701 basehttp 19136 25532 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:53:56,957 basehttp 19136 15884 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:53:56,976 basehttp 19136 15884 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:54:06,377 basehttp 19136 23284 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:54:06,400 basehttp 19136 23284 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:55:32,754 basehttp 19136 26768 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 14:56:14,483 basehttp 19136 27520 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:56:14,503 basehttp 19136 27520 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:57:47,435 basehttp 19136 27520 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:57:47,456 basehttp 19136 27520 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:58:10,093 basehttp 19136 23704 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+WARNING 2025-09-09 15:04:12,479 log 19136 9316 Unauthorized: /api/v1/challenges/challenges/1/
+WARNING 2025-09-09 15:04:12,484 log 19136 16768 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 15:04:12,484 basehttp 19136 9316 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 401 183
+WARNING 2025-09-09 15:04:12,486 basehttp 19136 16768 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 15:04:12,497 log 19136 16768 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 15:04:12,497 basehttp 19136 16768 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+INFO 2025-09-09 15:04:12,548 basehttp 19136 16768 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-09 15:04:12,548 basehttp 19136 9316 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-09 15:04:12,564 basehttp 19136 16768 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-09 15:04:12,732 log 19136 9316 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 15:04:12,736 log 19136 16768 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 15:04:12,742 basehttp 19136 16768 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-09 15:04:12,745 basehttp 19136 9316 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-09 15:04:12,775 log 19136 5192 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 15:04:12,776 basehttp 19136 5192 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-09 15:04:43,497 basehttp 19136 5192 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-09 15:04:44,337 basehttp 19136 5192 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 15:05:38,524 basehttp 19136 28488 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 15:09:54,810 basehttp 19136 28488 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 15:28:29,244 basehttp 19136 27672 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 15:28:29,333 basehttp 19136 27672 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 15:28:29,360 basehttp 19136 25392 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 15:44:40,208 basehttp 19136 10836 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 15:47:32,069 autoreload 26136 19148 Watching for file changes with StatReloader
+INFO 2025-09-09 15:54:25,732 basehttp 26136 11016 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 15:54:25,750 basehttp 26136 11628 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 15:54:25,769 basehttp 26136 11016 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+WARNING 2025-09-09 16:12:47,014 log 26136 5884 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-09 16:12:47,014 basehttp 26136 5884 "POST /api/v1/auth/login/ HTTP/1.1" 401 63
+INFO 2025-09-09 16:12:56,925 basehttp 26136 8980 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 16:13:32,677 basehttp 26136 8980 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 16:14:32,482 basehttp 26136 25404 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 16:14:58,105 basehttp 26136 25404 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 920
+INFO 2025-09-09 16:18:10,362 basehttp 26136 26404 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 16:20:55,768 basehttp 26136 12076 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:20:55,789 basehttp 26136 12076 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:31:37,300 basehttp 26136 27360 "OPTIONS /api/v1/challenges/challenges/1/ HTTP/1.1" 200 0
+INFO 2025-09-09 16:31:37,381 basehttp 26136 27360 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 16:45:09,351 basehttp 26136 24272 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:45:09,392 basehttp 26136 24272 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:45:09,396 basehttp 26136 12368 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 16:45:28,578 basehttp 26136 12368 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:45:28,605 basehttp 26136 12368 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:45:45,727 basehttp 26136 23720 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:45:45,750 basehttp 26136 23720 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:47:15,342 basehttp 26136 10060 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:47:15,362 basehttp 26136 10060 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:34,693 basehttp 26136 19344 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:34,724 basehttp 26136 19344 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:35,878 basehttp 26136 19344 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:35,898 basehttp 26136 19344 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:51,818 basehttp 26136 27460 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:48:51,836 basehttp 26136 27460 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:49:05,157 basehttp 26136 13740 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:49:05,170 basehttp 26136 13740 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+WARNING 2025-09-09 16:51:08,600 log 26136 12196 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-09 16:51:08,610 basehttp 26136 12196 "POST /api/v1/auth/login/ HTTP/1.1" 401 63
+INFO 2025-09-09 16:51:17,764 basehttp 26136 12196 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 16:52:57,376 basehttp 26136 15416 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 16:53:34,881 basehttp 26136 11348 "OPTIONS /api/v1/challenges/carbon-footprint/ HTTP/1.1" 200 0
+INFO 2025-09-09 16:53:34,955 basehttp 26136 11348 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 921
+INFO 2025-09-09 16:56:17,551 basehttp 26136 7448 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 16:56:17,551 basehttp 26136 21596 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 16:56:17,651 basehttp 26136 7448 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:56:17,731 basehttp 26136 7448 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:58:36,065 basehttp 26136 5632 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 16:58:36,103 basehttp 26136 5632 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:01:16,198 basehttp 26136 14864 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:01:16,198 basehttp 26136 10512 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+WARNING 2025-09-09 19:01:16,259 log 26136 10512 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 19:01:16,281 basehttp 26136 10512 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 19:01:16,308 log 26136 10512 Unauthorized: /api/v1/users/me/
+INFO 2025-09-09 19:01:16,310 basehttp 26136 14864 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-09 19:01:16,316 basehttp 26136 10512 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 19:01:17,410 log 26136 10512 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 19:01:17,410 log 26136 14864 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 19:01:17,434 basehttp 26136 14864 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-09 19:01:17,438 basehttp 26136 10512 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-09 19:02:41,019 basehttp 26136 1040 "OPTIONS /api/v1/auth/register/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:02:42,133 basehttp 26136 1040 "POST /api/v1/auth/register/ HTTP/1.1" 201 639
+INFO 2025-09-09 19:03:13,002 basehttp 26136 20768 "OPTIONS /api/v1/auth/register/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:03:13,863 basehttp 26136 20768 "POST /api/v1/auth/register/ HTTP/1.1" 201 657
+INFO 2025-09-09 19:09:27,623 basehttp 26136 24264 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:09:27,654 basehttp 26136 24264 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:14:41,735 basehttp 26136 6076 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:14:41,757 basehttp 26136 6076 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:14:54,162 basehttp 26136 23876 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:14:54,175 basehttp 26136 23876 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:15:06,304 basehttp 26136 17020 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:15:06,321 basehttp 26136 17020 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:16:45,602 autoreload 26136 19148 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 19:16:48,132 autoreload 8216 5844 Watching for file changes with StatReloader
+INFO 2025-09-09 19:17:19,342 autoreload 8216 5844 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 19:17:21,637 autoreload 7888 10964 Watching for file changes with StatReloader
+INFO 2025-09-09 19:19:21,283 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:21,324 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:21,539 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:21,556 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:21,847 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:21,867 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,087 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,105 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,316 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,348 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,542 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:19:22,563 basehttp 7888 24132 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:20:34,567 autoreload 7888 10964 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 19:20:37,277 autoreload 21576 26812 Watching for file changes with StatReloader
+INFO 2025-09-09 19:33:41,637 basehttp 21576 20660 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:33:41,656 basehttp 21576 20660 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:34:11,342 basehttp 21576 24252 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:34:11,342 basehttp 21576 27096 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:34:11,384 basehttp 21576 18008 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:34:11,416 basehttp 21576 18008 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:34:11,438 basehttp 21576 24252 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:34:11,471 basehttp 21576 24252 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:34:32,350 basehttp 21576 23420 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:34:42,332 basehttp 21576 12720 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:35:19,323 basehttp 21576 23188 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:35:30,337 basehttp 21576 24368 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:35:37,021 basehttp 21576 24368 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:35:56,344 basehttp 21576 23872 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:06,794 basehttp 21576 27248 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:15,757 basehttp 21576 25992 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:22,011 basehttp 21576 25992 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:45,016 basehttp 21576 6796 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:45,980 basehttp 21576 24660 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:46,711 basehttp 21576 24660 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:47,010 basehttp 21576 24660 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:47,260 basehttp 21576 24660 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:36:47,648 basehttp 21576 24660 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:29,717 basehttp 21576 16552 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+WARNING 2025-09-09 19:38:30,564 log 21576 16552 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-09 19:38:30,564 basehttp 21576 16552 "POST /api/v1/auth/login/ HTTP/1.1" 401 63
+INFO 2025-09-09 19:38:42,217 basehttp 21576 16552 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 19:38:45,285 basehttp 21576 13044 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:38:45,286 basehttp 21576 16552 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:38:45,366 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:45,432 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:46,862 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:47,374 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:47,964 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:38:48,319 basehttp 21576 16552 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:39:41,315 basehttp 21576 15216 "OPTIONS /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:39:41,316 basehttp 21576 2904 "OPTIONS /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 200 0
+WARNING 2025-09-09 19:39:41,336 log 21576 2904 Not Found: /api/v1/challenges/carbon-footprint/latest/
+WARNING 2025-09-09 19:39:41,336 basehttp 21576 2904 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 404 53
+INFO 2025-09-09 19:39:41,352 basehttp 21576 2904 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 200 921
+INFO 2025-09-09 19:39:41,360 basehttp 21576 15216 "OPTIONS /api/v1/challenges/carbon-footprint/statistics/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:39:41,398 basehttp 21576 15216 "GET /api/v1/challenges/carbon-footprint/statistics/ HTTP/1.1" 200 1132
+INFO 2025-09-09 19:39:41,409 basehttp 21576 2904 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:39:41,461 basehttp 21576 2904 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+WARNING 2025-09-09 19:39:58,314 log 21576 26012 Not Found: /api/v1/challenges/carbon-footprint/latest/
+WARNING 2025-09-09 19:39:58,314 basehttp 21576 26012 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 404 53
+INFO 2025-09-09 19:39:58,328 basehttp 21576 26012 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 200 921
+INFO 2025-09-09 19:39:58,357 basehttp 21576 26012 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:39:58,368 basehttp 21576 26012 "GET /api/v1/challenges/carbon-footprint/statistics/ HTTP/1.1" 200 1132
+INFO 2025-09-09 19:39:58,420 basehttp 21576 26012 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:40:09,344 basehttp 21576 5052 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 200 921
+WARNING 2025-09-09 19:40:09,355 log 21576 5052 Not Found: /api/v1/challenges/carbon-footprint/latest/
+WARNING 2025-09-09 19:40:09,356 basehttp 21576 5052 "GET /api/v1/challenges/carbon-footprint/latest/ HTTP/1.1" 404 53
+INFO 2025-09-09 19:40:09,440 basehttp 21576 5052 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:40:09,450 basehttp 21576 5052 "GET /api/v1/challenges/carbon-footprint/statistics/ HTTP/1.1" 200 1132
+INFO 2025-09-09 19:40:09,517 basehttp 21576 5052 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 19:40:33,177 basehttp 21576 27156 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:40:33,179 basehttp 21576 28400 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:40:33,195 basehttp 21576 28400 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:40:33,210 basehttp 21576 28400 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:40:33,223 basehttp 21576 28400 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:40:33,234 basehttp 21576 28400 "GET /api/v1/users/me/ HTTP/1.1" 200 558
+INFO 2025-09-09 19:42:05,095 basehttp 21576 23164 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:42:05,209 basehttp 21576 23164 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:44:45,272 basehttp 21576 16416 "OPTIONS /api/v1/challenges/challenges/1/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:44:45,405 basehttp 21576 16416 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 19:48:09,446 basehttp 21576 28252 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-09 19:48:10,360 basehttp 21576 28252 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 19:54:20,181 basehttp 21576 4928 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 19:59:32,125 autoreload 5564 21312 Watching for file changes with StatReloader
+INFO 2025-09-09 19:59:38,920 basehttp 5564 6104 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 19:59:44,905 basehttp 5564 20708 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 19:59:44,920 basehttp 5564 20708 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:00:04,025 basehttp 5564 20708 "OPTIONS /api/v1/challenges/challenges/2/ HTTP/1.1" 200 0
+INFO 2025-09-09 20:00:04,101 basehttp 5564 20708 "GET /api/v1/challenges/challenges/2/ HTTP/1.1" 200 1981
+INFO 2025-09-09 20:14:03,705 basehttp 5564 24104 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 20:14:03,710 basehttp 5564 24828 "OPTIONS /api/v1/challenges/challenges/ HTTP/1.1" 200 0
+INFO 2025-09-09 20:14:03,897 basehttp 5564 24828 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:14:03,974 basehttp 5564 24828 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:14:10,612 basehttp 5564 24828 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:14:10,659 basehttp 5564 24828 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:14:10,920 basehttp 5564 25144 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:14:10,936 basehttp 5564 25144 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:16:58,169 basehttp 5564 27216 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:16:58,229 basehttp 5564 27216 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:16:58,455 basehttp 5564 21184 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:16:58,458 basehttp 5564 21184 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:17:01,442 basehttp 5564 26968 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:17:01,458 basehttp 5564 26968 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:17:01,485 basehttp 5564 26964 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:17:01,533 basehttp 5564 26964 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:46,557 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:46,668 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:46,788 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:46,822 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:47,459 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:47,503 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:47,535 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:47,642 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:48,144 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:48,186 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:48,220 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:48,304 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:49,049 basehttp 5564 15072 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:49,087 basehttp 5564 26600 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:19:49,115 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:19:49,215 basehttp 5564 27360 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:20:17,855 basehttp 5564 25508 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:20:17,901 basehttp 5564 25508 "GET /api/v1/challenges/challenges/ HTTP/1.1" 200 2759
+INFO 2025-09-09 20:20:18,164 basehttp 5564 25552 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:20:18,190 basehttp 5564 25552 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:20:22,632 basehttp 5564 25552 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:20:22,642 basehttp 5564 25552 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:29:02,752 basehttp 5564 17904 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 20:29:02,875 basehttp 5564 17904 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 21:55:20,277 basehttp 5564 8356 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 21:55:20,281 basehttp 5564 24048 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+WARNING 2025-09-09 21:55:20,377 log 5564 8356 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 21:55:20,384 basehttp 5564 8356 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-09 21:55:20,384 log 5564 8356 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-09 21:55:20,384 basehttp 5564 8356 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+INFO 2025-09-09 21:55:20,408 basehttp 5564 24048 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+INFO 2025-09-09 21:55:20,424 basehttp 5564 8356 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-09 21:55:20,613 log 5564 8356 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 21:55:20,623 log 5564 24048 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-09 21:55:20,623 basehttp 5564 8356 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-09 21:55:20,623 basehttp 5564 24048 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-09 22:04:10,038 autoreload 12976 26796 Watching for file changes with StatReloader
