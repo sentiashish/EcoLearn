@@ -1600,3 +1600,4 @@ INFO 2025-09-09 12:16:00,402 autoreload 20736 21424 C:\Users\aswin\Documents\Sih
 INFO 2025-09-09 12:16:02,039 autoreload 18800 19188 Watching for file changes with StatReloader
 INFO 2025-09-09 12:18:13,727 autoreload 18800 19188 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
 INFO 2025-09-09 12:18:15,374 autoreload 20860 6296 Watching for file changes with StatReloader
+INFO 2025-09-09 12:19:47,717 basehttp 20860 13516 "POST /api/v1/auth/register/ HTTP/1.1" 201 640
