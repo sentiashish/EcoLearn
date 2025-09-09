@@ -1951,3 +1951,14 @@ WARNING 2025-09-09 21:55:20,623 log 5564 24048 Not Found: /api/v1/auth/token/ref
 WARNING 2025-09-09 21:55:20,623 basehttp 5564 8356 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
 WARNING 2025-09-09 21:55:20,623 basehttp 5564 24048 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
 INFO 2025-09-09 22:04:10,038 autoreload 12976 26796 Watching for file changes with StatReloader
+INFO 2025-09-09 22:04:12,733 basehttp 12976 10112 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+WARNING 2025-09-09 22:04:13,298 log 12976 10112 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-09 22:04:13,298 basehttp 12976 10112 "POST /api/v1/auth/login/ HTTP/1.1" 401 63
+WARNING 2025-09-09 22:04:16,003 log 12976 10112 Unauthorized: /api/v1/auth/login/
+WARNING 2025-09-09 22:04:16,003 basehttp 12976 10112 "POST /api/v1/auth/login/ HTTP/1.1" 401 63
+INFO 2025-09-09 22:04:22,006 basehttp 12976 10112 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 22:16:02,827 basehttp 12976 19032 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 22:17:20,566 basehttp 12976 8956 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:17:20,597 basehttp 12976 8956 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:18:54,615 basehttp 12976 5836 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 22:18:54,674 basehttp 12976 5836 "GET /api/v1/users/me/ HTTP/1.1" 200 537

@@ -24,7 +24,7 @@ import {
 } from '@heroicons/react/24/solid';
 
 import GamificationSystem from './GamificationSystem';
-import InteractiveQuiz from './InteractiveQuiz';
+import EcoQuiz from './EcoQuiz';
 import ProgressTracker from './ProgressTracker';
 import EnvironmentalMiniGames, { GameResult } from './EnvironmentalMiniGames';
 import EcosystemBuilder from './EcosystemBuilder';
@@ -198,7 +198,7 @@ const LearningDashboard: React.FC<LearningDashboardProps> = ({ onClose }) => {
   if (showQuiz) {
     return (
       <div className="min-h-screen bg-gray-50 p-4">
-        <InteractiveQuiz onComplete={handleQuizComplete} onClose={() => setShowQuiz(false)} />
+        <EcoQuiz onComplete={handleQuizComplete} onClose={() => setShowQuiz(false)} />
       </div>
     );
   }
