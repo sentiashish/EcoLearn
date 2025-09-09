@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Challenge, Submission } from '@/types';
-import { useChallenge } from '@/hooks/useApi';
+import { useChallenge, useChallengeSubmissions, useSubmitChallenge } from '@/hooks/useApi';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import CarbonFootprintCalculator from '@/components/CarbonFootprintCalculator';
 import { 
   ArrowLeftIcon, 
   PlayIcon, 
@@ -31,9 +31,9 @@ const ChallengeSubmit: React.FC = () => {
   ];
 
   // Use React Query hooks
-  const { data: challenge, isLoading: challengeLoading, error: challengeError } = useChallenge.getChallengeDetail(parseInt(id || '0'));
-  const { data: submissionsData, isLoading: submissionsLoading } = useChallenge.getChallengeSubmissions(parseInt(id || '0'));
-  const { mutate: submitChallenge, isPending: submitting } = useChallenge.submitChallenge();
+  const { data: challenge, isLoading: challengeLoading, error: challengeError } = useChallenge(parseInt(id || '0'));
+  const { data: submissionsData, isLoading: submissionsLoading } = useChallengeSubmissions();
+  const { mutate: submitChallenge, isPending: submitting } = useSubmitChallenge();
 
   const loading = challengeLoading || submissionsLoading;
   const submissions = submissionsData?.results || [];
@@ -74,13 +74,14 @@ const ChallengeSubmit: React.FC = () => {
       return;
     }
 
+    const formData = new FormData();
+    formData.append('code', code);
+    formData.append('language', language);
+
     submitChallenge(
       {
-        challengeId: challenge.id,
-        submission: {
-          code,
-          language,
-        },
+        id: challenge.id,
+        formData,
       },
       {
         onSuccess: () => {
@@ -165,6 +166,53 @@ const ChallengeSubmit: React.FC = () => {
             Go back home
           </button>
         </div>
+      </div>
+    );
+  }
+
+  // Special case for Carbon Footprint Calculator (Challenge ID 1)
+  if (parseInt(id || '0') === 1) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <div className="mb-6">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+          >
+            <ArrowLeftIcon className="h-5 w-5 mr-2" />
+            Back
+          </button>
+
+          <div className="bg-white rounded-lg shadow-sm border p-6">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                  Carbon Footprint Calculator
+                </h1>
+                <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+                    Easy
+                  </span>
+                  <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">
+                    Climate
+                  </span>
+                  <div className="flex items-center">
+                    <TrophyIcon className="h-4 w-4 mr-1" />
+                    100 eco-points
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-600">
+              Calculate your daily carbon emissions based on transportation, energy use, and consumption habits. 
+              Use this tool to understand your environmental impact and find ways to reduce it.
+            </p>
+          </div>
+        </div>
+
+        {/* Carbon Footprint Calculator Component */}
+        <CarbonFootprintCalculator />
       </div>
     );
   }

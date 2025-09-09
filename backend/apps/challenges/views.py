@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status, permissions
+from rest_framework import viewsets, status, permissions, serializers
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q, Avg, Count, F, Max
@@ -9,13 +9,14 @@ from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from .models import (
     Challenge, Submission, ChallengeRating,
-    ChallengeFavorite, ChallengeDiscussion
+    ChallengeFavorite, ChallengeDiscussion, CarbonFootprint
 )
 from .serializers import (
     ChallengeListSerializer, ChallengeDetailSerializer, ChallengeCreateSerializer,
     SubmissionSerializer, SubmissionCreateSerializer, SubmissionDetailSerializer,
     ChallengeRatingSerializer, ChallengeFavoriteSerializer,
-    ChallengeDiscussionSerializer, LeaderboardSerializer
+    ChallengeDiscussionSerializer, LeaderboardSerializer,
+    CarbonFootprintSerializer, CarbonFootprintCreateSerializer
 )
 from apps.users.permissions import IsTeacherOrReadOnly, IsOwnerOrReadOnly
 
@@ -577,4 +578,105 @@ class ChallengeDiscussionViewSet(viewsets.ModelViewSet):
         
         return Response({
             'message': 'Discussion flagged for moderation.'
+        })
+
+
+class CarbonFootprintViewSet(viewsets.ModelViewSet):
+    """ViewSet for carbon footprint calculations."""
+    
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = CarbonFootprintSerializer
+    
+    def get_queryset(self):
+        """Return carbon footprint calculations for the current user."""
+        return CarbonFootprint.objects.filter(
+            user=self.request.user
+        ).order_by('-created_at')
+    
+    def get_serializer_class(self):
+        """Return appropriate serializer based on action."""
+        if self.action in ['create']:
+            return CarbonFootprintCreateSerializer
+        return CarbonFootprintSerializer
+    
+    def create(self, request, *args, **kwargs):
+        """Create a new carbon footprint calculation."""
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        # Save the calculation
+        calculation = serializer.save()
+        
+        # Return detailed response with results
+        response_serializer = CarbonFootprintSerializer(calculation)
+        return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+    
+    @action(detail=False, methods=['get'])
+    def latest(self, request):
+        """Get the latest carbon footprint calculation for the user."""
+        try:
+            latest_calculation = CarbonFootprint.objects.filter(
+                user=request.user
+            ).latest('created_at')
+            
+            serializer = CarbonFootprintSerializer(latest_calculation)
+            return Response(serializer.data)
+        
+        except CarbonFootprint.DoesNotExist:
+            return Response(
+                {'message': 'No carbon footprint calculations found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+    
+    @action(detail=False, methods=['get'])
+    def history(self, request):
+        """Get carbon footprint calculation history for the user."""
+        calculations = CarbonFootprint.objects.filter(
+            user=request.user
+        ).order_by('-created_at')[:10]  # Last 10 calculations
+        
+        serializer = CarbonFootprintSerializer(calculations, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def statistics(self, request):
+        """Get carbon footprint statistics for the user."""
+        calculations = CarbonFootprint.objects.filter(user=request.user)
+        
+        if not calculations.exists():
+            return Response(
+                {'message': 'No calculations found to generate statistics.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+        
+        from django.db.models import Avg, Min, Max
+        stats = calculations.aggregate(
+            avg_total=Avg('total_emissions'),
+            min_total=Min('total_emissions'),
+            max_total=Max('total_emissions'),
+            avg_eco_score=Avg('eco_score'),
+            max_eco_score=Max('eco_score')
+        )
+        
+        # Add trend information
+        latest = calculations.first()
+        oldest = calculations.last()
+        
+        trend = 'stable'
+        if latest and oldest and latest.id != oldest.id:
+            if latest.total_emissions < oldest.total_emissions:
+                trend = 'improving'
+            elif latest.total_emissions > oldest.total_emissions:
+                trend = 'worsening'
+        
+        return Response({
+            'total_calculations': calculations.count(),
+            'average_emissions': round(stats['avg_total'] or 0, 2),
+            'lowest_emissions': round(stats['min_total'] or 0, 2),
+            'highest_emissions': round(stats['max_total'] or 0, 2),
+            'average_eco_score': round(stats['avg_eco_score'] or 0, 1),
+            'best_eco_score': stats['max_eco_score'] or 0,
+            'trend': trend,
+            'world_average': 4000,  # kg CO2 per person per year
+            'latest_calculation': CarbonFootprintSerializer(latest).data if latest else None
         })

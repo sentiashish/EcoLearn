@@ -203,6 +203,16 @@ class ApiService {
     }
   }
 
+  async getUserStats() {
+    try {
+      const response = await this.api.get('/users/stats/');
+      return response.data;
+    } catch (error) {
+      const errorInfo = this.extractErrorInfo(error);
+      throw new ApiException(errorInfo.message, errorInfo.status, errorInfo.field);
+    }
+  }
+
   // Content methods
   async getContent(params?: { page?: number; difficulty?: string; search?: string }) {
     const response = await this.api.get('/content/lessons/', { params });
@@ -221,17 +231,17 @@ class ApiService {
 
   // Challenge methods
   async getChallenges(params?: { difficulty?: string; page?: number }) {
-    const response = await this.api.get('/content/challenges/', { params });
+    const response = await this.api.get('/challenges/challenges/', { params });
     return response.data;
   }
 
   async getChallengeDetail(id: number) {
-    const response = await this.api.get(`/content/challenges/${id}/`);
+    const response = await this.api.get(`/challenges/challenges/${id}/`);
     return response.data;
   }
 
   async submitChallenge(id: number, formData: FormData) {
-    const response = await this.api.post(`/content/challenges/${id}/submit/`, formData, {
+    const response = await this.api.post(`/challenges/challenges/${id}/submit/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -240,7 +250,28 @@ class ApiService {
   }
 
   async getChallengeSubmissions() {
-    const response = await this.api.get('/content/challenges/submissions/');
+    const response = await this.api.get('/challenges/submissions/');
+    return response.data;
+  }
+
+  // Carbon Footprint methods
+  async createCarbonFootprint(data: any) {
+    const response = await this.api.post('/challenges/carbon-footprint/', data);
+    return response.data;
+  }
+
+  async getCarbonFootprintHistory() {
+    const response = await this.api.get('/challenges/carbon-footprint/history/');
+    return response.data;
+  }
+
+  async getLatestCarbonFootprint() {
+    const response = await this.api.get('/challenges/carbon-footprint/latest/');
+    return response.data;
+  }
+
+  async getCarbonFootprintStatistics() {
+    const response = await this.api.get('/challenges/carbon-footprint/statistics/');
     return response.data;
   }
 

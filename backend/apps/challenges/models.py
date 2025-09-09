@@ -464,3 +464,200 @@ class ChallengeDiscussion(models.Model):
     def is_reply(self):
         """Check if this is a reply to another discussion."""
         return self.parent is not None
+
+
+class CarbonFootprint(models.Model):
+    """Model for storing carbon footprint calculations."""
+    
+    # User and challenge relationship
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='carbon_footprints'
+    )
+    challenge = models.ForeignKey(
+        Challenge,
+        on_delete=models.CASCADE,
+        related_name='carbon_calculations'
+    )
+    
+    # Transportation data
+    car_distance = models.FloatField(
+        default=0.0,
+        help_text="Daily car distance in kilometers"
+    )
+    car_efficiency = models.FloatField(
+        default=8.0,
+        help_text="Car fuel efficiency in L/100km"
+    )
+    public_transport_distance = models.FloatField(
+        default=0.0,
+        help_text="Daily public transport distance in kilometers"
+    )
+    flights_short = models.IntegerField(
+        default=0,
+        help_text="Number of short-haul flights per year"
+    )
+    flights_long = models.IntegerField(
+        default=0,
+        help_text="Number of long-haul flights per year"
+    )
+    
+    # Energy consumption
+    electricity_usage = models.FloatField(
+        default=0.0,
+        help_text="Monthly electricity usage in kWh"
+    )
+    heating_gas = models.FloatField(
+        default=0.0,
+        help_text="Monthly natural gas usage in cubic meters"
+    )
+    renewable_energy = models.BooleanField(
+        default=False,
+        help_text="Uses renewable energy sources"
+    )
+    
+    # Food and consumption
+    meat_consumption = models.CharField(
+        max_length=20,
+        choices=[
+            ('high', 'High (daily)'),
+            ('medium', 'Medium (few times/week)'),
+            ('low', 'Low (rarely)'),
+            ('none', 'Vegetarian/Vegan'),
+        ],
+        default='medium'
+    )
+    local_food = models.BooleanField(
+        default=False,
+        help_text="Primarily buys local/organic food"
+    )
+    waste_recycling = models.BooleanField(
+        default=True,
+        help_text="Regularly recycles waste"
+    )
+    
+    # Calculated results
+    transport_emissions = models.FloatField(
+        default=0.0,
+        help_text="Transport emissions in kg CO2/year"
+    )
+    energy_emissions = models.FloatField(
+        default=0.0,
+        help_text="Energy emissions in kg CO2/year"
+    )
+    lifestyle_emissions = models.FloatField(
+        default=0.0,
+        help_text="Lifestyle emissions in kg CO2/year"
+    )
+    total_emissions = models.FloatField(
+        default=0.0,
+        help_text="Total carbon footprint in kg CO2/year"
+    )
+    
+    # Recommendations and score
+    eco_score = models.IntegerField(
+        default=0,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+        help_text="Eco-friendliness score out of 100"
+    )
+    recommendations = models.JSONField(
+        default=list,
+        help_text="Personalized recommendations for reducing carbon footprint"
+    )
+    
+    # Metadata
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user', 'created_at']),
+            models.Index(fields=['challenge', 'created_at']),
+        ]
+    
+    def __str__(self):
+        return f"{self.user.email} - {self.total_emissions:.1f} kg CO2/year"
+    
+    def save(self, *args, **kwargs):
+        """Calculate emissions before saving."""
+        self.calculate_emissions()
+        super().save(*args, **kwargs)
+    
+    def calculate_emissions(self):
+        """Calculate carbon emissions for each category."""
+        # Transport emissions (kg CO2/year)
+        car_emissions = (self.car_distance * 365 * self.car_efficiency * 2.31) / 100  # 2.31 kg CO2 per liter
+        transport_emissions = (self.public_transport_distance * 365 * 0.1)  # 0.1 kg CO2 per km
+        flight_emissions = (self.flights_short * 200) + (self.flights_long * 1000)  # Approximate emissions
+        
+        self.transport_emissions = car_emissions + transport_emissions + flight_emissions
+        
+        # Energy emissions (kg CO2/year)
+        electricity_emissions = self.electricity_usage * 12 * 0.5  # 0.5 kg CO2 per kWh (varies by country)
+        gas_emissions = self.heating_gas * 12 * 2.0  # 2.0 kg CO2 per cubic meter
+        
+        if self.renewable_energy:
+            electricity_emissions *= 0.1  # 90% reduction for renewable energy
+            
+        self.energy_emissions = electricity_emissions + gas_emissions
+        
+        # Lifestyle emissions (kg CO2/year)
+        meat_multipliers = {
+            'high': 1000,
+            'medium': 600,
+            'low': 300,
+            'none': 150
+        }
+        
+        diet_emissions = meat_multipliers.get(self.meat_consumption, 600)
+        
+        if self.local_food:
+            diet_emissions *= 0.8  # 20% reduction for local food
+            
+        waste_emissions = 50 if not self.waste_recycling else 20
+        
+        self.lifestyle_emissions = diet_emissions + waste_emissions
+        
+        # Total emissions
+        self.total_emissions = self.transport_emissions + self.energy_emissions + self.lifestyle_emissions
+        
+        # Calculate eco score (inverse relationship with emissions)
+        world_average = 4000  # kg CO2 per person per year
+        self.eco_score = max(0, min(100, int(100 - (self.total_emissions / world_average * 100))))
+        
+        # Generate recommendations
+        self.generate_recommendations()
+    
+    def generate_recommendations(self):
+        """Generate personalized recommendations."""
+        recommendations = []
+        
+        if self.car_distance > 20:
+            recommendations.append("Consider using public transport or cycling for shorter trips")
+        
+        if self.flights_short > 4:
+            recommendations.append("Try to reduce short-haul flights by using trains or buses")
+            
+        if self.electricity_usage > 300:
+            recommendations.append("Switch to LED bulbs and energy-efficient appliances")
+            
+        if not self.renewable_energy:
+            recommendations.append("Consider switching to a renewable energy provider")
+            
+        if self.meat_consumption in ['high', 'medium']:
+            recommendations.append("Try having meat-free days to reduce your dietary footprint")
+            
+        if not self.local_food:
+            recommendations.append("Buy local and seasonal produce when possible")
+            
+        if not self.waste_recycling:
+            recommendations.append("Start recycling and composting organic waste")
+            
+        if self.total_emissions > 4000:
+            recommendations.append("Your footprint is above the global average - small changes can make a big difference!")
+        elif self.total_emissions < 2000:
+            recommendations.append("Great job! You're already living sustainably")
+            
+        self.recommendations = recommendations

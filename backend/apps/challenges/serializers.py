@@ -5,7 +5,7 @@ from apps.content.serializers import CategorySerializer, TagSerializer
 from apps.users.serializers import PublicUserProfileSerializer, PublicUserSerializer
 from .models import (
     Challenge, Submission, ChallengeRating,
-    ChallengeFavorite, ChallengeDiscussion
+    ChallengeFavorite, ChallengeDiscussion, CarbonFootprint
 )
 
 User = get_user_model()
@@ -486,3 +486,66 @@ class LeaderboardSerializer(serializers.Serializer):
     solved_count = serializers.IntegerField(read_only=True)
     total_points = serializers.IntegerField(read_only=True)
     avg_execution_time = serializers.FloatField(read_only=True)
+
+
+class CarbonFootprintSerializer(serializers.ModelSerializer):
+    """Serializer for carbon footprint calculations."""
+    
+    user = PublicUserSerializer(read_only=True)
+    challenge = serializers.PrimaryKeyRelatedField(read_only=True)
+    
+    class Meta:
+        model = CarbonFootprint
+        fields = [
+            'id', 'user', 'challenge',
+            # Transportation
+            'car_distance', 'car_efficiency', 'public_transport_distance',
+            'flights_short', 'flights_long',
+            # Energy
+            'electricity_usage', 'heating_gas', 'renewable_energy',
+            # Lifestyle
+            'meat_consumption', 'local_food', 'waste_recycling',
+            # Results
+            'transport_emissions', 'energy_emissions', 'lifestyle_emissions',
+            'total_emissions', 'eco_score', 'recommendations',
+            # Metadata
+            'created_at', 'updated_at'
+        ]
+        read_only_fields = [
+            'transport_emissions', 'energy_emissions', 'lifestyle_emissions',
+            'total_emissions', 'eco_score', 'recommendations', 'created_at', 'updated_at'
+        ]
+    
+    def create(self, validated_data):
+        """Create carbon footprint calculation."""
+        validated_data['user'] = self.context['request'].user
+        validated_data['challenge_id'] = 1  # Carbon Footprint Calculator challenge
+        return super().create(validated_data)
+
+
+class CarbonFootprintCreateSerializer(serializers.ModelSerializer):
+    """Serializer for creating carbon footprint calculations."""
+    
+    class Meta:
+        model = CarbonFootprint
+        fields = [
+            # Transportation
+            'car_distance', 'car_efficiency', 'public_transport_distance',
+            'flights_short', 'flights_long',
+            # Energy
+            'electricity_usage', 'heating_gas', 'renewable_energy',
+            # Lifestyle
+            'meat_consumption', 'local_food', 'waste_recycling'
+        ]
+    
+    def create(self, validated_data):
+        """Create carbon footprint calculation."""
+        validated_data['user'] = self.context['request'].user
+        # Get or create the Carbon Footprint Calculator challenge
+        try:
+            from .models import Challenge
+            challenge = Challenge.objects.get(id=1)
+            validated_data['challenge'] = challenge
+        except Challenge.DoesNotExist:
+            raise serializers.ValidationError("Carbon Footprint Calculator challenge not found")
+        return super().create(validated_data)

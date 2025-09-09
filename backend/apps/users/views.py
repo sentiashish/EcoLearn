@@ -3,7 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.contrib.auth import get_user_model
-from django.db.models import Q
+from django.db.models import Q, Count, Sum
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import UserProfile, TeacherProfile, StudentClass
@@ -143,6 +143,75 @@ class UserViewSet(viewsets.ModelViewSet):
             serializer.save()
             return Response({'message': 'Password changed successfully.'})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    @action(detail=False, methods=['get'])
+    def stats(self, request):
+        """Get current user's statistics and progress."""
+        user = request.user
+        
+        # Get lesson completions
+        from apps.content.models import LessonCompletion, QuizAttempt
+        from apps.challenges.models import ChallengeSubmission
+        
+        lesson_completions = LessonCompletion.objects.filter(user=user)
+        quiz_attempts = QuizAttempt.objects.filter(user=user, passed=True)
+        challenge_submissions = ChallengeSubmission.objects.filter(user=user, status='approved')
+        
+        # Calculate totals (you might want to adjust these based on your actual data)
+        total_lessons_available = 50  # You can calculate this dynamically
+        total_challenges_available = 30  # You can calculate this dynamically
+        
+        stats = {
+            'totalLessons': total_lessons_available,
+            'completedLessons': lesson_completions.count(),
+            'totalChallenges': total_challenges_available,
+            'completedChallenges': challenge_submissions.count(),
+            'totalPoints': user.profile.total_points if hasattr(user, 'profile') else 0,
+            'currentStreak': user.profile.current_streak if hasattr(user, 'profile') else 0,
+            'longestStreak': user.profile.longest_streak if hasattr(user, 'profile') else 0,
+            'rank': self._calculate_user_rank(user),
+            'totalUsers': User.objects.filter(role=User.UserRole.STUDENT, is_active=True).count(),
+            'completionRate': round((lesson_completions.count() / total_lessons_available) * 100, 1) if total_lessons_available > 0 else 0,
+            'recentAchievements': [],  # You can implement achievements later
+            'categoryProgress': self._get_category_progress(user),
+        }
+        
+        return Response(stats)
+    
+    def _calculate_user_rank(self, user):
+        """Calculate user's rank based on total points."""
+        if not hasattr(user, 'profile'):
+            return 0
+        
+        users_with_higher_points = User.objects.filter(
+            role=User.UserRole.STUDENT,
+            is_active=True,
+            profile__total_points__gt=user.profile.total_points
+        ).count()
+        
+        return users_with_higher_points + 1
+    
+    def _get_category_progress(self, user):
+        """Get user's progress in different categories."""
+        # This is a simplified version - you can enhance it based on your category structure
+        from apps.content.models import Category, LessonCompletion
+        
+        progress = {}
+        categories = Category.objects.filter(is_active=True)
+        
+        for category in categories:
+            total_lessons = category.lessons.count()
+            completed_lessons = LessonCompletion.objects.filter(
+                user=user,
+                lesson__category=category
+            ).count()
+            
+            if total_lessons > 0:
+                progress[category.name] = round((completed_lessons / total_lessons) * 100, 1)
+            else:
+                progress[category.name] = 0
+        
+        return progress
     
     @action(detail=False, methods=['get'])
     def leaderboard(self, request):

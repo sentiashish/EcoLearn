@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
     ChallengeViewSet, SubmissionViewSet, ChallengeRatingViewSet,
-    ChallengeFavoriteViewSet, ChallengeDiscussionViewSet
+    ChallengeFavoriteViewSet, ChallengeDiscussionViewSet, CarbonFootprintViewSet
 )
 
 app_name = 'challenges'
@@ -14,6 +14,7 @@ router.register(r'submissions', SubmissionViewSet, basename='submission')
 router.register(r'ratings', ChallengeRatingViewSet, basename='rating')
 router.register(r'favorites', ChallengeFavoriteViewSet, basename='favorite')
 router.register(r'discussions', ChallengeDiscussionViewSet, basename='discussion')
+router.register(r'carbon-footprint', CarbonFootprintViewSet, basename='carbon-footprint')
 
 urlpatterns = [
     # Include router URLs

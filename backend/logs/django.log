@@ -1601,3 +1601,95 @@ INFO 2025-09-09 12:16:02,039 autoreload 18800 19188 Watching for file changes wi
 INFO 2025-09-09 12:18:13,727 autoreload 18800 19188 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
 INFO 2025-09-09 12:18:15,374 autoreload 20860 6296 Watching for file changes with StatReloader
 INFO 2025-09-09 12:19:47,717 basehttp 20860 13516 "POST /api/v1/auth/register/ HTTP/1.1" 201 640
+INFO 2025-09-09 12:26:09,552 basehttp 20860 23264 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-09 12:26:10,568 basehttp 20860 23264 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 12:48:50,185 basehttp 20860 3232 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 12:48:50,201 basehttp 20860 9956 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-09 12:48:50,437 basehttp 20860 3232 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:48:50,474 basehttp 20860 3232 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:50:25,640 basehttp 20860 9320 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:50:25,661 basehttp 20860 9320 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:52:27,922 basehttp 20860 4812 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:52:27,943 basehttp 20860 4812 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 12:54:14,215 basehttp 20860 4576 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-09 13:00:50,760 autoreload 20860 6296 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 13:00:54,050 autoreload 23652 11224 Watching for file changes with StatReloader
+INFO 2025-09-09 13:01:11,162 autoreload 23652 11224 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 13:01:13,312 autoreload 22140 9316 Watching for file changes with StatReloader
+INFO 2025-09-09 13:01:32,512 basehttp 22140 18000 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:01:32,531 basehttp 22140 18000 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:02:44,013 basehttp 22140 19836 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:02:44,043 basehttp 22140 19836 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:05:57,588 basehttp 22140 12964 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 13:05:59,944 basehttp 22140 6948 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:05:59,981 basehttp 22140 6948 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:06:11,774 basehttp 22140 19140 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:06:11,790 basehttp 22140 19140 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:06:40,213 basehttp 22140 19216 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:06:40,232 basehttp 22140 19216 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-09 13:09:56,257 autoreload 21884 18456 Watching for file changes with StatReloader
+INFO 2025-09-09 13:12:03,624 autoreload 328 19152 Watching for file changes with StatReloader
+INFO 2025-09-09 13:59:56,346 basehttp 328 12832 "OPTIONS /api/v1/auth/register/ HTTP/1.1" 200 0
+INFO 2025-09-09 13:59:58,365 basehttp 328 12832 "POST /api/v1/auth/register/ HTTP/1.1" 201 643
+INFO 2025-09-09 14:01:48,688 basehttp 328 25932 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:01:48,717 basehttp 328 25932 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:01:55,325 basehttp 328 25932 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:01:55,344 basehttp 328 25932 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:03:44,117 basehttp 328 19628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:03:44,133 basehttp 328 19628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:03:52,756 basehttp 328 19628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:03:52,774 basehttp 328 19628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:13:13,052 basehttp 328 13804 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:13:13,083 basehttp 328 13804 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:16:00,871 basehttp 328 23872 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:16:00,890 basehttp 328 23872 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:18:25,802 autoreload 328 19152 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\models.py changed, reloading.
+INFO 2025-09-09 14:18:30,895 autoreload 19912 19172 Watching for file changes with StatReloader
+INFO 2025-09-09 14:18:45,411 autoreload 19912 19172 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-09 14:18:47,244 autoreload 25476 12396 Watching for file changes with StatReloader
+INFO 2025-09-09 14:18:59,222 autoreload 25476 12396 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-09 14:19:01,316 autoreload 21044 25340 Watching for file changes with StatReloader
+INFO 2025-09-09 14:19:19,885 autoreload 21044 25340 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-09 14:19:21,554 autoreload 1692 26052 Watching for file changes with StatReloader
+INFO 2025-09-09 14:19:26,992 autoreload 1692 26052 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-09 14:19:28,696 autoreload 26976 25352 Watching for file changes with StatReloader
+INFO 2025-09-09 14:19:35,303 autoreload 26976 25352 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-09 14:19:36,920 autoreload 25320 20420 Watching for file changes with StatReloader
+INFO 2025-09-09 14:19:54,542 autoreload 25320 20420 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-09 14:19:56,293 autoreload 23932 13704 Watching for file changes with StatReloader
+INFO 2025-09-09 14:20:12,706 autoreload 23932 13704 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\urls.py changed, reloading.
+INFO 2025-09-09 14:20:14,683 autoreload 27712 27964 Watching for file changes with StatReloader
+INFO 2025-09-09 14:20:20,336 autoreload 27712 27964 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\urls.py changed, reloading.
+INFO 2025-09-09 14:20:22,137 autoreload 26812 9320 Watching for file changes with StatReloader
+INFO 2025-09-09 14:21:27,662 autoreload 25816 24636 Watching for file changes with StatReloader
+INFO 2025-09-09 14:21:35,454 basehttp 25816 21308 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:21:35,500 basehttp 25816 21308 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:21:43,263 basehttp 25816 27708 "OPTIONS /api/v1/content/challenges/1/ HTTP/1.1" 200 0
+WARNING 2025-09-09 14:21:43,878 log 25816 27708 Not Found: /api/v1/content/challenges/1/
+WARNING 2025-09-09 14:21:43,879 basehttp 25816 27708 "GET /api/v1/content/challenges/1/ HTTP/1.1" 404 24149
+WARNING 2025-09-09 14:21:44,918 log 25816 27708 Not Found: /api/v1/content/challenges/1/
+WARNING 2025-09-09 14:21:44,920 basehttp 25816 27708 "GET /api/v1/content/challenges/1/ HTTP/1.1" 404 24149
+INFO 2025-09-09 14:23:50,584 basehttp 25816 26192 "OPTIONS /api/v1/challenges/challenges/1/ HTTP/1.1" 200 0
+INFO 2025-09-09 14:23:50,605 basehttp 25816 1976 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:23:50,628 basehttp 25816 1976 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:23:50,635 basehttp 25816 26192 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:24:01,544 basehttp 25816 17900 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:24:01,557 basehttp 25816 17900 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:24:01,559 basehttp 25816 1856 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:24:36,251 autoreload 23844 1384 Watching for file changes with StatReloader
+INFO 2025-09-09 14:24:38,016 basehttp 23844 20272 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:24:38,028 basehttp 23844 3592 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:24:38,032 basehttp 23844 20272 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:29:36,602 autoreload 11368 16812 Watching for file changes with StatReloader
+INFO 2025-09-09 14:29:38,478 basehttp 11368 11628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:29:38,496 basehttp 11368 11628 "GET /api/v1/users/me/ HTTP/1.1" 200 540
+INFO 2025-09-09 14:29:40,923 basehttp 11368 28404 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:30:09,199 basehttp 11368 1540 "OPTIONS /api/v1/challenges/carbon-footprint/ HTTP/1.1" 200 0
+INFO 2025-09-09 14:30:09,232 basehttp 11368 1540 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 909
+INFO 2025-09-09 14:31:21,460 basehttp 11368 17884 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 929
+INFO 2025-09-09 14:35:55,289 basehttp 11368 20940 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 758
+INFO 2025-09-09 14:36:57,073 basehttp 11368 20940 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-09 14:36:57,907 autoreload 11368 16812 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\models.py changed, reloading.
+INFO 2025-09-09 14:37:00,577 autoreload 28184 26300 Watching for file changes with StatReloader
+INFO 2025-09-09 14:37:03,191 autoreload 28184 26300 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-09 14:37:05,164 autoreload 19136 16476 Watching for file changes with StatReloader
