@@ -6,7 +6,8 @@ from .views import (
     UserViewSet,
     UserProfileViewSet,
     TeacherProfileViewSet,
-    StudentClassViewSet
+    StudentClassViewSet,
+    UserRegistrationView
 )
 
 # Create router for ViewSets
@@ -20,6 +21,7 @@ urlpatterns = [
     # JWT Authentication endpoints
     path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('auth/register/', UserRegistrationView.as_view(), name='user_register'),
     
     # Include router URLs
     path('', include(router.urls)),

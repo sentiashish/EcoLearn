@@ -1,0 +1,25 @@
+{
+    "python.defaultInterpreter": "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend\\myworld\\Scripts\\python.exe",
+    "python.pythonPath": "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend\\myworld\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.envFile": "${workspaceFolder}/backend/.env",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.flake8Path": "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend\\myworld\\Scripts\\flake8.exe",
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend\\myworld\\Scripts\\black.exe",
+    "python.analysis.extraPaths": [
+        "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend",
+        "C:\\Users\\aswin\\Documents\\Sih_website\\Ecolearn\\backend\\apps"
+    ],
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.autoImportCompletions": true,
+    "pylance.insidersChannel": "off",
+    "files.associations": {
+        "*.py": "python"
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace"
+}

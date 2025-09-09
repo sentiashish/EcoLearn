@@ -1553,3 +1553,50 @@ INFO 2025-09-09 11:03:02,004 basehttp 39720 3780 "OPTIONS /api/v1/auth/login/ HT
 INFO 2025-09-09 11:03:02,721 basehttp 39720 3780 "POST /api/v1/auth/login/ HTTP/1.1" 200 826
 WARNING 2025-09-09 11:03:23,643 log 39720 39852 Not Found: /
 WARNING 2025-09-09 11:03:23,644 basehttp 39720 39852 "GET / HTTP/1.1" 404 3150
+INFO 2025-09-09 11:31:44,340 autoreload 6504 8948 Watching for file changes with StatReloader
+WARNING 2025-09-09 11:31:47,647 log 6504 16744 Not Found: /
+WARNING 2025-09-09 11:31:47,647 basehttp 6504 16744 "GET / HTTP/1.1" 404 3150
+WARNING 2025-09-09 11:31:47,777 log 6504 16744 Not Found: /favicon.ico
+WARNING 2025-09-09 11:31:47,778 basehttp 6504 16744 "GET /favicon.ico HTTP/1.1" 404 3201
+WARNING 2025-09-09 11:33:42,313 log 6504 15256 Not Found: /
+WARNING 2025-09-09 11:33:42,314 basehttp 6504 15256 "GET / HTTP/1.1" 404 3150
+WARNING 2025-09-09 11:34:54,852 log 6504 5884 Not Found: /
+WARNING 2025-09-09 11:34:54,852 basehttp 6504 5884 "GET / HTTP/1.1" 404 3150
+INFO 2025-09-09 11:35:08,384 autoreload 14376 23116 Watching for file changes with StatReloader
+WARNING 2025-09-09 11:35:10,563 log 14376 7460 Not Found: /
+WARNING 2025-09-09 11:35:10,566 basehttp 14376 7460 "GET / HTTP/1.1" 404 3150
+INFO 2025-09-09 11:36:23,362 autoreload 14376 23116 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\config\urls.py changed, reloading.
+INFO 2025-09-09 11:36:25,040 autoreload 5180 18712 Watching for file changes with StatReloader
+INFO 2025-09-09 11:36:33,871 basehttp 5180 9532 "GET / HTTP/1.1" 200 328
+INFO 2025-09-09 11:40:31,487 basehttp 5180 21216 "OPTIONS /api/v1/auth/register/ HTTP/1.1" 200 0
+WARNING 2025-09-09 11:40:31,549 log 5180 21216 Not Found: /api/v1/auth/register/
+WARNING 2025-09-09 11:40:31,550 basehttp 5180 21216 "POST /api/v1/auth/register/ HTTP/1.1" 404 12105
+INFO 2025-09-09 11:43:59,892 autoreload 21456 20128 Watching for file changes with StatReloader
+INFO 2025-09-09 11:44:35,265 basehttp 5180 21240 "GET /?id=ce9d2735-9444-4dd9-80ac-161075ec7c72&vscodeBrowserReqId=1757398474927 HTTP/1.1" 200 328
+INFO 2025-09-09 11:44:44,379 basehttp 5180 17548 "GET /api/docs/?id=ce9d2735-9444-4dd9-80ac-161075ec7c72&vscodeBrowserReqId=1757398483814 HTTP/1.1" 200 4478
+WARNING 2025-09-09 11:44:59,333 log 5180 19296 Not Found: /api/v1/auth/register/
+WARNING 2025-09-09 11:44:59,334 basehttp 5180 19296 "POST /api/v1/auth/register/ HTTP/1.1" 404 12105
+INFO 2025-09-09 11:45:02,155 autoreload 21456 20128 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\config\urls.py changed, reloading.
+INFO 2025-09-09 11:45:02,443 autoreload 5180 18712 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\config\urls.py changed, reloading.
+INFO 2025-09-09 11:45:03,938 autoreload 17548 14356 Watching for file changes with StatReloader
+INFO 2025-09-09 11:45:04,326 autoreload 22760 12580 Watching for file changes with StatReloader
+INFO 2025-09-09 11:46:00,798 basehttp 22824 20004 "OPTIONS /api/v1/auth/register/ HTTP/1.1" 200 0
+WARNING 2025-09-09 11:46:08,113 log 22824 19324 Not Found: /health/
+WARNING 2025-09-09 11:46:08,114 basehttp 22824 19324 "GET /health/?id=ce9d2735-9444-4dd9-80ac-161075ec7c72&vscodeBrowserReqId=1757398567740 HTTP/1.1" 404 3383
+INFO 2025-09-09 12:08:35,259 autoreload 23352 6672 Watching for file changes with StatReloader
+INFO 2025-09-09 12:09:11,190 autoreload 1976 13392 Watching for file changes with StatReloader
+INFO 2025-09-09 12:09:13,289 basehttp 1976 21348 "GET / HTTP/1.1" 200 328
+WARNING 2025-09-09 12:11:46,761 log 1976 17228 Not Found: /api/v1/auth/register/
+WARNING 2025-09-09 12:11:46,761 basehttp 1976 17228 "POST /api/v1/auth/register/ HTTP/1.1" 404 12233
+INFO 2025-09-09 12:13:10,568 autoreload 1976 13392 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-09 12:13:12,656 autoreload 9604 21896 Watching for file changes with StatReloader
+INFO 2025-09-09 12:13:28,793 autoreload 9604 21896 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 12:13:30,423 autoreload 20736 21424 Watching for file changes with StatReloader
+WARNING 2025-09-09 12:14:05,795 log 20736 4712 Bad Request: /api/v1/auth/register/
+WARNING 2025-09-09 12:14:05,800 basehttp 20736 4712 "POST /api/v1/auth/register/ HTTP/1.1" 400 53
+WARNING 2025-09-09 12:14:30,369 log 20736 21244 Bad Request: /api/v1/auth/register/
+WARNING 2025-09-09 12:14:30,371 basehttp 20736 21244 "POST /api/v1/auth/register/ HTTP/1.1" 400 53
+INFO 2025-09-09 12:16:00,402 autoreload 20736 21424 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 12:16:02,039 autoreload 18800 19188 Watching for file changes with StatReloader
+INFO 2025-09-09 12:18:13,727 autoreload 18800 19188 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-09 12:18:15,374 autoreload 20860 6296 Watching for file changes with StatReloader

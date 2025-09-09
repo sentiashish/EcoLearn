@@ -56,10 +56,10 @@ const Register: React.FC = () => {
       newErrors.password = 'Password must contain at least one uppercase letter, one lowercase letter, and one number';
     }
 
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = 'Please confirm your password';
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+    if (!formData.password_confirm) {
+      newErrors.password_confirm = 'Please confirm your password';
+    } else if (formData.password !== formData.password_confirm) {
+      newErrors.password_confirm = 'Passwords do not match';
     }
 
     if (!formData.country) {
@@ -294,7 +294,7 @@ const Register: React.FC = () => {
 
             {/* Confirm Password */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password_confirm" className="block text-sm font-medium text-gray-700 mb-2">
                 🔐 Confirm Password
               </label>
               <div className="relative">
@@ -302,14 +302,14 @@ const Register: React.FC = () => {
                   <LockClosedIcon className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  id="confirmPassword"
-                  name="confirmPassword"
+                  id="password_confirm"
+                  name="password_confirm"
                   type={showConfirmPassword ? 'text' : 'password'}
                   autoComplete="new-password"
-                  value={formData.confirmPassword}
+                  value={formData.password_confirm}
                   onChange={handleChange}
                   className={`block w-full pl-10 pr-10 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
-                    errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-gray-300'
+                    errors.password_confirm ? 'border-red-300 bg-red-50' : 'border-gray-300'
                   }`}
                   placeholder="Confirm your password"
                 />
@@ -325,8 +325,8 @@ const Register: React.FC = () => {
                   )}
                 </button>
               </div>
-              {errors.confirmPassword && (
-                <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
+              {errors.password_confirm && (
+                <p className="mt-1 text-sm text-red-600">{errors.password_confirm}</p>
               )}
             </div>
 
