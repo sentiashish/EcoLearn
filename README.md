@@ -24,8 +24,7 @@ A comprehensive web application for environmental education featuring interactiv
 
 ### Backend
 - Django 4.2 with Django REST Framework
-- PostgreSQL database
-- Redis for caching
+- SQLite database (for local development)
 - JWT authentication
 - CORS configuration
 - Comprehensive API endpoints
@@ -36,8 +35,6 @@ A comprehensive web application for environmental education featuring interactiv
 
 - Node.js 18+ and npm
 - Python 3.11+
-- PostgreSQL 15+
-- Redis (optional, for caching)
 
 ### Local Development
 
@@ -63,23 +60,25 @@ A comprehensive web application for environmental education featuring interactiv
    ```bash
    cp .env.example .env
    ```
+   
+   For local development, you can use the default SQLite database settings.
 
-5. Configure your database and other settings in `.env`
-
-6. Run migrations:
+5. Run migrations:
    ```bash
    python manage.py migrate
    ```
 
-7. Create a superuser (optional):
+6. Create a superuser (optional):
    ```bash
    python manage.py createsuperuser
    ```
 
-8. Start the development server:
+7. Start the development server:
    ```bash
    python manage.py runserver
    ```
+   
+   The backend will be available at `http://localhost:8000`
 
 #### Frontend Setup
 
@@ -97,6 +96,8 @@ A comprehensive web application for environmental education featuring interactiv
    ```bash
    cp .env.example .env
    ```
+   
+   For local development, set `VITE_API_BASE_URL=http://localhost:8000/api/v1`
 
 4. Start the development server:
    ```bash
@@ -105,100 +106,33 @@ A comprehensive web application for environmental education featuring interactiv
 
 5. Open your browser and navigate to `http://localhost:3000`
 
-## Deployment
+## Local Development Environment Variables
 
-### Frontend Deployment (Vercel)
-
-1. **Prepare Environment Variables**:
-   - Update `frontend/.env.production` with your production values
-   - Set `VITE_API_BASE_URL` to your backend API URL
-
-2. **Update Vercel Configuration**:
-   - Modify `frontend/vercel.json`:
-     - Replace `https://your-backend-domain.com` with your actual backend domain
-     - Update environment variables as needed
-
-3. **Deploy to Vercel**:
-   ```bash
-   cd frontend
-   npx vercel --prod
-   ```
-
-### Backend Deployment (Render)
-
-1. **Prepare Environment Variables**:
-   - Update `render.yaml` configuration:
-     - Replace `your-backend-domain.onrender.com` with your actual Render app name
-     - Replace `your-frontend-domain.vercel.app` with your actual Vercel domain
-     - Replace `your-custom-domain.com` with your actual custom domain (if any)
-
-2. **Database Setup**:
-   - The `render.yaml` includes PostgreSQL and Redis configuration
-   - Database will be automatically created and connected
-
-3. **Deploy to Render**:
-   - Connect your GitHub repository to Render
-   - Render will automatically deploy using the `render.yaml` configuration
-
-### Environment Variables
-
-#### Frontend (.env.production)
+### Frontend (.env)
 ```env
-VITE_API_BASE_URL=https://your-backend-domain.com/api/v1
-VITE_WS_BASE_URL=wss://your-backend-domain.com/ws
+VITE_API_BASE_URL=http://localhost:8000/api/v1
 VITE_APP_NAME=Environmental Education Platform
-VITE_APP_VERSION=1.0.0
-VITE_APP_ENV=production
-
-# Feature flags
-VITE_ENABLE_PWA=true
-VITE_ENABLE_ANALYTICS=false
-
-# External services (configure as needed)
-VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name
-VITE_GOOGLE_ANALYTICS_ID=your_ga_id
-
-# Production settings
-VITE_MOCK_API=false
-VITE_DEBUG_MODE=false
+VITE_APP_ENV=development
+VITE_DEBUG_MODE=true
 ```
 
-#### Backend (.env)
+### Backend (.env)
 ```env
-# Django settings
-DEBUG=False
-SECRET_KEY=your-secret-key
-ALLOWED_HOSTS=your-backend-domain.onrender.com,your-custom-domain.com
+# Django settings for local development
+DEBUG=True
+SECRET_KEY=your-local-secret-key
+ALLOWED_HOSTS=localhost,127.0.0.1
 
-# CORS and CSRF
-CORS_ALLOWED_ORIGINS=https://your-frontend-domain.vercel.app,https://your-custom-domain.com
-CSRF_TRUSTED_ORIGINS=https://your-frontend-domain.vercel.app,https://your-custom-domain.com
+# CORS settings for local development
+CORS_ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
+CSRF_TRUSTED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
 CORS_ALLOW_CREDENTIALS=True
 
-# Database (automatically configured on Render)
-DATABASE_URL=postgresql://user:password@host:port/database
+# SQLite database (default for local development)
+# DATABASE_URL=sqlite:///db.sqlite3
 
-# Redis (automatically configured on Render)
-REDIS_URL=redis://host:port
-
-# Email configuration
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_HOST_USER=your-email@gmail.com
-EMAIL_HOST_PASSWORD=your-app-password
-
-# External services (configure as needed)
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-OPENAI_API_KEY=your_openai_key
-GOOGLE_MAPS_API_KEY=your_maps_key
-
-# Monitoring
-SENTRY_DSN=your_sentry_dsn
+# Email configuration (optional for local development)
+EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 ```
 
 ## API Documentation
