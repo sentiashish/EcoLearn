@@ -1,0 +1,56 @@
+# Django and DRF
+Django==4.2.7
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.0
+django-cors-headers==4.3.1
+django-filter==23.3
+
+# Database
+psycopg2-binary==2.9.7
+dj-database-url==2.1.0
+
+# Environment and Configuration
+python-decouple==3.8
+
+# File Storage
+django-cloudinary-storage==0.3.0
+cloudinary==1.36.0
+Pillow==10.0.1
+
+# API Documentation
+drf-spectacular==0.26.5
+
+# Caching and Task Queue
+redis==5.0.1
+celery==5.3.4
+django-redis==5.4.0
+
+# Static Files
+whitenoise==6.6.0
+
+# Production Server
+gunicorn==21.2.0
+
+# Development and Testing
+pytest==7.4.3
+pytest-django==4.7.0
+pytest-cov==4.1.0
+factory-boy==3.3.0
+faker==19.12.0
+
+# Code Quality
+flake8==6.1.0
+black==23.10.1
+isort==5.12.0
+
+# Security
+django-ratelimit==4.1.0
+django-axes==6.1.1
+
+# Utilities
+requests==2.31.0
+python-dateutil==2.8.2
+django-extensions==3.2.3
+
+# Monitoring (optional)
+sentry-sdk[django]==1.38.0

@@ -1,0 +1,383 @@
+/* ==========================================================================
+   DESIGN TOKENS - Netflix-Style Dark Cinematic Palette
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     COLOR PALETTE - Dark Cinematic Theme
+     ========================================================================== */
+  
+  /* Primary Colors - Netflix Red & Variations */
+  --color-primary-50: #fef2f2;
+  --color-primary-100: #fee2e2;
+  --color-primary-200: #fecaca;
+  --color-primary-300: #fca5a5;
+  --color-primary-400: #f87171;
+  --color-primary-500: #ef4444;
+  --color-primary-600: #dc2626;
+  --color-primary-700: #b91c1c;
+  --color-primary-800: #991b1b;
+  --color-primary-900: #7f1d1d;
+  --color-primary-950: #450a0a;
+  
+  /* Netflix Brand Colors */
+  --color-netflix-red: #e50914;
+  --color-netflix-red-dark: #b20710;
+  --color-netflix-red-light: #f40612;
+  
+  /* Dark Background Colors */
+  --color-background-primary: #0f0f0f;
+  --color-background-secondary: #1a1a1a;
+  --color-background-tertiary: #2a2a2a;
+  --color-background-elevated: #333333;
+  --color-background-modal: #141414;
+  --color-background-card: #1f1f1f;
+  --color-background-hover: #2f2f2f;
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e5e5e5;
+  --color-text-tertiary: #b3b3b3;
+  --color-text-muted: #8c8c8c;
+  --color-text-disabled: #666666;
+  --color-text-inverse: #000000;
+  
+  /* Accent Colors */
+  --color-accent-gold: #ffd700;
+  --color-accent-blue: #0071eb;
+  --color-accent-green: #46d369;
+  --color-accent-orange: #ff9500;
+  --color-accent-purple: #9c27b0;
+  
+  /* Status Colors */
+  --color-success: #46d369;
+  --color-warning: #ff9500;
+  --color-error: #e50914;
+  --color-info: #0071eb;
+  
+  /* Border Colors */
+  --color-border-primary: #333333;
+  --color-border-secondary: #404040;
+  --color-border-tertiary: #555555;
+  --color-border-focus: #e50914;
+  --color-border-hover: #666666;
+  
+  /* Overlay Colors */
+  --color-overlay-light: rgba(0, 0, 0, 0.4);
+  --color-overlay-medium: rgba(0, 0, 0, 0.6);
+  --color-overlay-heavy: rgba(0, 0, 0, 0.8);
+  --color-overlay-modal: rgba(0, 0, 0, 0.9);
+  
+  /* Gradient Colors */
+  --gradient-hero: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%);
+  --gradient-card: linear-gradient(135deg, rgba(229,9,20,0.1) 0%, rgba(0,0,0,0.8) 100%);
+  --gradient-button: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+  
+  /* ==========================================================================
+     TYPOGRAPHY
+     ========================================================================== */
+  
+  /* Font Families */
+  --font-primary: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-secondary: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 1.875rem;   /* 30px */
+  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-5xl: 3rem;       /* 48px */
+  --font-size-6xl: 3.75rem;    /* 60px */
+  --font-size-7xl: 4.5rem;     /* 72px */
+  --font-size-8xl: 6rem;       /* 96px */
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  
+  /* Letter Spacing */
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+  
+  /* ==========================================================================
+     SPACING
+     ========================================================================== */
+  
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
+  --space-32: 8rem;     /* 128px */
+  --space-40: 10rem;    /* 160px */
+  --space-48: 12rem;    /* 192px */
+  --space-56: 14rem;    /* 224px */
+  --space-64: 16rem;    /* 256px */
+  
+  /* Component Specific Spacing */
+  --space-card-padding: var(--space-6);
+  --space-section-padding: var(--space-16);
+  --space-container-padding: var(--space-8);
+  
+  /* ==========================================================================
+     SIZING
+     ========================================================================== */
+  
+  /* Container Sizes */
+  --container-xs: 20rem;     /* 320px */
+  --container-sm: 24rem;     /* 384px */
+  --container-md: 28rem;     /* 448px */
+  --container-lg: 32rem;     /* 512px */
+  --container-xl: 36rem;     /* 576px */
+  --container-2xl: 42rem;    /* 672px */
+  --container-3xl: 48rem;    /* 768px */
+  --container-4xl: 56rem;    /* 896px */
+  --container-5xl: 64rem;    /* 1024px */
+  --container-6xl: 72rem;    /* 1152px */
+  --container-7xl: 80rem;    /* 1280px */
+  --container-full: 100%;
+  
+  /* Component Sizes */
+  --size-hero-height: 70vh;
+  --size-card-width: 300px;
+  --size-card-height: 169px;
+  --size-poster-width: 200px;
+  --size-poster-height: 300px;
+  --size-modal-width: 90vw;
+  --size-modal-max-width: 1200px;
+  
+  /* ==========================================================================
+     BORDER RADIUS
+     ========================================================================== */
+  
+  --radius-none: 0;
+  --radius-sm: 0.125rem;     /* 2px */
+  --radius-base: 0.25rem;    /* 4px */
+  --radius-md: 0.375rem;     /* 6px */
+  --radius-lg: 0.5rem;       /* 8px */
+  --radius-xl: 0.75rem;      /* 12px */
+  --radius-2xl: 1rem;        /* 16px */
+  --radius-3xl: 1.5rem;      /* 24px */
+  --radius-full: 9999px;
+  
+  /* Component Specific Radius */
+  --radius-card: var(--radius-lg);
+  --radius-button: var(--radius-md);
+  --radius-modal: var(--radius-xl);
+  
+  /* ==========================================================================
+     SHADOWS
+     ========================================================================== */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  
+  /* Netflix-style Shadows */
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --shadow-card-hover: 0 8px 40px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 20px 60px rgba(0, 0, 0, 0.8);
+  --shadow-hero: 0 0 100px rgba(0, 0, 0, 0.8);
+  
+  /* ==========================================================================
+     TRANSITIONS & ANIMATIONS
+     ========================================================================== */
+  
+  /* Transition Durations */
+  --duration-75: 75ms;
+  --duration-100: 100ms;
+  --duration-150: 150ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
+  --duration-500: 500ms;
+  --duration-700: 700ms;
+  --duration-1000: 1000ms;
+  
+  /* Transition Timing Functions */
+  --ease-linear: linear;
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-netflix: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Common Transitions */
+  --transition-fast: all var(--duration-150) var(--ease-out);
+  --transition-base: all var(--duration-200) var(--ease-out);
+  --transition-slow: all var(--duration-300) var(--ease-out);
+  --transition-netflix: all var(--duration-300) var(--ease-netflix);
+  
+  /* ==========================================================================
+     Z-INDEX LAYERS
+     ========================================================================== */
+  
+  --z-auto: auto;
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
+  
+  /* Component Layers */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  
+  /* ==========================================================================
+     BREAKPOINTS (for reference in CSS)
+     ========================================================================== */
+  
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ==========================================================================
+   DARK MODE OVERRIDES (if needed for system preference)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Already dark by default, but can override specific values if needed */
+  }
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+.netflix-gradient {
+  background: var(--gradient-hero);
+}
+
+.netflix-card-gradient {
+  background: var(--gradient-card);
+}
+
+.netflix-button-gradient {
+  background: var(--gradient-button);
+}
+
+.netflix-shadow {
+  box-shadow: var(--shadow-card);
+}
+
+.netflix-shadow-hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.netflix-transition {
+  transition: var(--transition-netflix);
+}
+
+/* ==========================================================================
+   COMPONENT BASE STYLES
+   ========================================================================== */
+
+.netflix-card {
+  background: var(--color-background-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-netflix);
+}
+
+.netflix-card:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.netflix-button {
+  background: var(--gradient-button);
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: var(--space-3) var(--space-6);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.netflix-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.netflix-button:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY UTILITIES
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.reduced-motion {
+  transition: none !important;
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
