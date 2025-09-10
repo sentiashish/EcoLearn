@@ -1,3 +1,5 @@
+// Update frontend/src/pages/Challenges.tsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -12,6 +14,7 @@ import {
   PlayIcon,
   FunnelIcon
 } from '@heroicons/react/24/outline';
+import { useChallengeData } from '../hooks/useApi';
 
 interface Challenge {
   id: number;
@@ -19,144 +22,63 @@ interface Challenge {
   description: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
   category: string;
-  language: string;
   points: number;
   submissions: number;
-  successRate: number;
-  timeLimit: string;
+  success_rate: number;
+  time_limit: string;
   tags: string[];
-  isCompleted?: boolean;
-  bestScore?: number;
+  is_completed?: boolean;
+  best_score?: number;
+  best_emission?: number
 }
 
-const challenges: Challenge[] = [
-  {
-    id: 1,
-    title: "Carbon Footprint Calculator",
-    description: "Build a calculator that estimates daily carbon emissions based on transportation, energy use, and consumption habits.",
-    difficulty: "Easy",
-    category: "Climate",
-    language: "Python",
-    points: 100,
-    submissions: 1250,
-    successRate: 78,
-    timeLimit: "45 min",
-    tags: ["Math", "Environment", "Beginner"],
-    isCompleted: true,
-    bestScore: 95
-  },
-  {
-    id: 2,
-    title: "Renewable Energy Optimizer",
-    description: "Create an algorithm to optimize the placement of solar panels and wind turbines for maximum energy efficiency.",
-    difficulty: "Hard",
-    category: "Energy",
-    language: "JavaScript",
-    points: 300,
-    submissions: 567,
-    successRate: 45,
-    timeLimit: "90 min",
-    tags: ["Algorithm", "Optimization", "Advanced"]
-  },
-  {
-    id: 3,
-    title: "Waste Sorting Classifier",
-    description: "Implement a machine learning model to classify waste items into recyclable, compostable, or landfill categories.",
-    difficulty: "Medium",
-    category: "Sustainability",
-    language: "Python",
-    points: 200,
-    submissions: 890,
-    successRate: 62,
-    timeLimit: "60 min",
-    tags: ["ML", "Classification", "Recycling"]
-  },
-  {
-    id: 4,
-    title: "Ecosystem Balance Simulator",
-    description: "Model predator-prey relationships and environmental factors to simulate ecosystem balance over time.",
-    difficulty: "Hard",
-    category: "Conservation",
-    language: "Java",
-    points: 350,
-    submissions: 423,
-    successRate: 38,
-    timeLimit: "120 min",
-    tags: ["Simulation", "Biology", "Complex"]
-  },
-  {
-    id: 5,
-    title: "Green Route Planner",
-    description: "Design an algorithm that finds the most environmentally friendly route considering traffic, vehicle type, and emissions.",
-    difficulty: "Medium",
-    category: "Transportation",
-    language: "JavaScript",
-    points: 250,
-    submissions: 734,
-    successRate: 55,
-    timeLimit: "75 min",
-    tags: ["Pathfinding", "Green Tech", "Maps"]
-  },
-  {
-    id: 6,
-    title: "Water Quality Monitor",
-    description: "Create a system to analyze water quality data and predict pollution levels using sensor readings.",
-    difficulty: "Medium",
-    category: "Water",
-    language: "Python",
-    points: 220,
-    submissions: 612,
-    successRate: 68,
-    timeLimit: "50 min",
-    tags: ["Data Analysis", "Sensors", "Environment"]
-  },
-  {
-    id: 7,
-    title: "Smart Grid Energy Manager",
-    description: "Implement a smart grid system that balances energy supply and demand while prioritizing renewable sources.",
-    difficulty: "Hard",
-    category: "Energy",
-    language: "C++",
-    points: 400,
-    submissions: 289,
-    successRate: 32,
-    timeLimit: "150 min",
-    tags: ["Grid", "Energy", "Expert"]
-  },
-  {
-    id: 8,
-    title: "Deforestation Tracker",
-    description: "Analyze satellite imagery data to detect and track deforestation patterns over time.",
-    difficulty: "Easy",
-    category: "Conservation",
-    language: "Python",
-    points: 150,
-    submissions: 945,
-    successRate: 72,
-    timeLimit: "40 min",
-    tags: ["Image Processing", "Forests", "Tracking"]
-  }
-];
-
 const Challenges: React.FC = () => {
+  const { challenges, loading, error, refetch } = useChallengeData();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [selectedDifficulty, setSelectedDifficulty] = useState<string>('All');
-  const [selectedLanguage, setSelectedLanguage] = useState<string>('All');
   const [searchTerm, setSearchTerm] = useState('');
   const [showCompleted, setShowCompleted] = useState(false);
 
   const categories = ['All', 'Climate', 'Energy', 'Sustainability', 'Conservation', 'Transportation', 'Water'];
   const difficulties = ['All', 'Easy', 'Medium', 'Hard'];
-  const languages = ['All', 'Python', 'JavaScript', 'Java', 'C++'];
 
-  const filteredChallenges = challenges.filter(challenge => {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🌱</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Loading Challenges...</h3>
+          <p className="text-gray-600">Please wait while we fetch the latest challenges.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">⚠️</div>
+          <h3 className="text-xl font-bold text-gray-900 mb-2">Failed to Load Challenges</h3>
+          <p className="text-gray-600 mb-4">{error}</p>
+          <button
+            onClick={refetch}
+            className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const filteredChallenges = challenges.filter((challenge: Challenge) => {
     const matchesCategory = selectedCategory === 'All' || challenge.category === selectedCategory;
     const matchesDifficulty = selectedDifficulty === 'All' || challenge.difficulty === selectedDifficulty;
-    const matchesLanguage = selectedLanguage === 'All' || challenge.language === selectedLanguage;
     const matchesSearch = challenge.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          challenge.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCompleted = !showCompleted || challenge.isCompleted;
-    return matchesCategory && matchesDifficulty && matchesLanguage && matchesSearch && (!showCompleted || matchesCompleted);
+    const matchesCompleted = !showCompleted || challenge.is_completed;
+    return matchesCategory && matchesDifficulty && matchesSearch && (!showCompleted || matchesCompleted);
   });
 
   const getDifficultyColor = (difficulty: string) => {
@@ -189,12 +111,12 @@ const Challenges: React.FC = () => {
               🏆 Eco-Challenges
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Solve real-world environmental problems through code and earn eco-points!
+              Solve real-world environmental problems and earn eco-points!
             </p>
             <div className="flex flex-wrap justify-center gap-4 text-lg">
               <div className="flex items-center gap-2">
                 <CodeBracketIcon className="h-6 w-6" />
-                <span>Code Solutions</span>
+                <span>Interactive Challenges</span>
               </div>
               <div className="flex items-center gap-2">
                 <TrophyIcon className="h-6 w-6" />
@@ -202,7 +124,7 @@ const Challenges: React.FC = () => {
               </div>
               <div className="flex items-center gap-2">
                 <FireIcon className="h-6 w-6" />
-                <span>Compete & Learn</span>
+                <span>Track Progress</span>
               </div>
             </div>
           </motion.div>
@@ -218,19 +140,20 @@ const Challenges: React.FC = () => {
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">
-              {challenges.filter(c => c.isCompleted).length}
+              {challenges.filter((c: Challenge) => c.is_completed).length}
             </div>
             <div className="text-gray-600">Completed</div>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-yellow-600 mb-2">
-              {challenges.reduce((sum, c) => sum + (c.bestScore || 0), 0)}
+              {challenges.reduce((sum: number, c: Challenge) => sum + (c.best_score || 0), 0)}
             </div>
             <div className="text-gray-600">Total Points</div>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center">
             <div className="text-3xl font-bold text-purple-600 mb-2">
-              {Math.round(challenges.reduce((sum, c) => sum + c.successRate, 0) / challenges.length)}%
+              {challenges.length > 0 ? 
+                Math.round(challenges.reduce((sum: number, c: Challenge) => sum + c.success_rate, 0) / challenges.length) : 0}%
             </div>
             <div className="text-gray-600">Avg Success Rate</div>
           </div>
@@ -242,7 +165,7 @@ const Challenges: React.FC = () => {
             <FunnelIcon className="h-5 w-5 text-gray-600" />
             <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             {/* Search */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
@@ -282,20 +205,6 @@ const Challenges: React.FC = () => {
                 ))}
               </select>
             </div>
-
-            {/* Language Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
-              <select
-                value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                {languages.map(language => (
-                  <option key={language} value={language}>{language}</option>
-                ))}
-              </select>
-            </div>
           </div>
 
           {/* Show Completed Toggle */}
@@ -315,7 +224,7 @@ const Challenges: React.FC = () => {
 
         {/* Challenges Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {filteredChallenges.map((challenge, index) => (
+          {filteredChallenges.map((challenge: Challenge, index: number) => (
             <motion.div
               key={challenge.id}
               initial={{ opacity: 0, y: 20 }}
@@ -330,11 +239,11 @@ const Challenges: React.FC = () => {
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(challenge.difficulty)}`}>
                       {challenge.difficulty}
                     </span>
-                    <span className="px-2 py-1 bg-white bg-opacity-20 rounded-full text-xs font-medium">
-                      {challenge.language}
+                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      {challenge.category}
                     </span>
                   </div>
-                  {challenge.isCompleted && (
+                  {challenge.is_completed && (
                     <CheckCircleIcon className="h-6 w-6 text-green-300" />
                   )}
                 </div>
@@ -352,26 +261,37 @@ const Challenges: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2 text-gray-600">
                     <ClockIcon className="h-4 w-4" />
-                    <span>{challenge.timeLimit}</span>
+                    <span>{challenge.time_limit}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600">
-                    <UserGroupIcon className="h-4 w-4" />
-                    <span>{challenge.submissions} submissions</span>
-                  </div>
+                  {challenge.best_score && (
+                    <div className="mb-4 p-3 bg-green-50 rounded-lg">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-green-800">Your Best Score</span>
+                        <span className="text-lg font-bold text-green-600">{challenge.best_score}/100</span>
+                      </div>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2">
                     <StarIcon className="h-4 w-4 text-yellow-400" />
-                    <span className={getSuccessRateColor(challenge.successRate)}>
-                      {challenge.successRate}% success
+                    <span className={getSuccessRateColor(challenge.success_rate)}>
+                      {challenge.success_rate.toFixed(1)}% success
                     </span>
                   </div>
                 </div>
 
                 {/* Best Score (if completed) */}
-                {challenge.bestScore && (
-                  <div className="mb-4 p-3 bg-green-50 rounded-lg">
+                {challenge.id === 1 && challenge.best_emission && (
+                  <div className="mb-4 p-3 bg-blue-50 rounded-lg">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-green-800">Your Best Score</span>
-                      <span className="text-lg font-bold text-green-600">{challenge.bestScore}/100</span>
+                      <span className="text-sm font-medium text-blue-800">Your Best Emission</span>
+                      <span className="text-lg font-bold text-blue-600">
+                        {challenge.best_emission.toFixed(2)} kg CO₂/year
+                      </span>
+                    </div>
+                    <div className="mt-1">
+                      <span className="text-xs text-blue-600">
+                        🌱 Lower is better for the environment
+                      </span>
                     </div>
                   </div>
                 )}
@@ -395,7 +315,7 @@ const Challenges: React.FC = () => {
                   to={`/challenge/${challenge.id}`}
                   className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-3 px-4 rounded-md hover:from-blue-600 hover:to-green-600 transition-all duration-300 flex items-center justify-center gap-2 font-medium"
                 >
-                  {challenge.isCompleted ? (
+                  {challenge.is_completed ? (
                     <>
                       <PlayIcon className="h-4 w-4" />
                       Try Again
@@ -431,10 +351,10 @@ const Challenges: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Code for the Planet?
+              Ready to Make an Impact?
             </h2>
             <p className="text-xl mb-8">
-              Join the community of eco-coders making a real impact!
+              Join thousands of eco-champions making a real difference!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

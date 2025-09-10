@@ -125,37 +125,6 @@ class ApiService {
           }
         }
 
-        // Handle other errors
-        if (error.response?.status >= 500) {
-          toast.error('Server error. Please try again later.');
-        } else if (error.response?.status === 403) {
-          toast.error('You do not have permission to perform this action.');
-        } else if (error.response?.status === 404) {
-          toast.error('The requested resource was not found.');
-        } else if (error.response?.status === 400) {
-          // Handle validation errors
-          const errorData = error.response.data;
-          if (errorData.detail) {
-            toast.error(errorData.detail);
-          } else if (errorData.non_field_errors) {
-            toast.error(errorData.non_field_errors[0]);
-          } else {
-            // Handle field-specific errors
-            const fieldErrors = Object.values(errorData).flat();
-            if (fieldErrors.length > 0) {
-              toast.error(fieldErrors[0] as string);
-            } else {
-              toast.error('Invalid data provided.');
-            }
-          }
-        } else if (error.response?.data?.message) {
-          toast.error(error.response.data.message);
-        } else if (error.message) {
-          toast.error(error.message);
-        } else {
-          toast.error('An unexpected error occurred.');
-        }
-
         return Promise.reject(error);
       }
     );
@@ -254,6 +223,42 @@ class ApiService {
     return response.data;
   }
 
+  // Challenge Data API (NEW)
+  async getChallengeData(): Promise<any> {
+    const response = await this.api.get('/challenges/challenge-data/');
+    return response.data;
+  }
+
+  async getChallengeDataById(id: number): Promise<any> {
+    const response = await this.api.get(`/challenges/challenge-data/${id}/`);
+    return response.data;
+  }
+
+  // Challenge Submissions API (NEW)
+  async createChallengeSubmission(data: {
+    challenge_id: number;
+    score: number;
+    is_completed: boolean;
+  }): Promise<any> {
+    const response = await this.api.post('/challenges/challenge-submissions/', data);
+    return response.data;
+  }
+
+  async getUserChallengeSubmissions(): Promise<any> {
+    const response = await this.api.get('/challenges/challenge-submissions/');
+    return response.data;
+  }
+
+  async getUserSubmissionsByChallenge(challengeId: number): Promise<any> {
+    const response = await this.api.get(`/challenges/challenge-submissions/by_challenge/?challenge_id=${challengeId}`);
+    return response.data;
+  }
+
+  async getUserBestScores(): Promise<any> {
+    const response = await this.api.get('/challenges/challenge-submissions/best_scores/');
+    return response.data;
+  }
+
   // Carbon Footprint methods
   async createCarbonFootprint(data: any) {
     const response = await this.api.post('/challenges/carbon-footprint/', data);
@@ -272,17 +277,6 @@ class ApiService {
 
   async getCarbonFootprintStatistics() {
     const response = await this.api.get('/challenges/carbon-footprint/statistics/');
-    return response.data;
-  }
-
-  // Gamification methods
-  async getUserProgress() {
-    const response = await this.api.get('/gamification/progress/');
-    return response.data;
-  }
-
-  async getUserAchievements() {
-    const response = await this.api.get('/gamification/achievements/');
     return response.data;
   }
 
@@ -314,6 +308,17 @@ class ApiService {
       const errorInfo = this.extractErrorInfo(error);
       throw new ApiException(errorInfo.message, errorInfo.status, errorInfo.field);
     }
+  }
+
+  // Gamification methods
+  async getUserProgress() {
+    const response = await this.api.get('/gamification/progress/');
+    return response.data;
+  }
+
+  async getUserAchievements() {
+    const response = await this.api.get('/gamification/achievements/');
+    return response.data;
   }
 
   async getLeaderboard(params?: { scope?: string; period?: 'week' | 'month' | 'all'; page?: number }) {

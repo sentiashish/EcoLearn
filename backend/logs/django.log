@@ -2007,3 +2007,177 @@ INFO 2025-09-10 00:28:25,902 autoreload 27712 21448 C:\Users\aswin\Documents\Sih
 INFO 2025-09-10 00:28:27,609 autoreload 26252 25044 Watching for file changes with StatReloader
 INFO 2025-09-10 00:35:54,238 autoreload 26252 25044 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
 INFO 2025-09-10 00:35:56,867 autoreload 13104 26904 Watching for file changes with StatReloader
+WARNING 2025-09-10 00:47:58,322 log 13104 28100 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 00:47:58,322 basehttp 13104 28100 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 00:47:58,322 log 13104 3220 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 00:47:58,322 basehttp 13104 3220 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 00:47:58,407 log 13104 3220 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 00:47:58,411 log 13104 28100 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 00:47:58,412 basehttp 13104 3220 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-10 00:47:58,412 basehttp 13104 28100 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-10 00:48:08,375 basehttp 13104 1144 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 00:51:32,458 basehttp 13104 9612 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 00:51:32,502 basehttp 13104 9612 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 00:52:04,883 basehttp 13104 10168 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 00:52:59,129 basehttp 13104 24104 "OPTIONS /api/v1/challenges/challenges/1/ HTTP/1.1" 200 0
+INFO 2025-09-10 00:52:59,247 basehttp 13104 24104 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-10 00:53:28,733 basehttp 13104 2816 "OPTIONS /api/v1/challenges/carbon-footprint/ HTTP/1.1" 200 0
+INFO 2025-09-10 00:53:28,784 basehttp 13104 2816 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 833
+INFO 2025-09-10 01:42:51,363 basehttp 13104 21304 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-10 01:42:51,365 basehttp 13104 25116 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-10 01:42:51,616 basehttp 13104 25116 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 01:42:51,644 basehttp 13104 25116 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 01:47:04,350 basehttp 13104 132 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 01:47:04,405 basehttp 13104 132 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 01:47:49,385 basehttp 13104 14172 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 01:47:49,392 basehttp 13104 14172 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:11:51,631 autoreload 13104 26904 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-10 02:11:58,201 autoreload 2580 24232 Watching for file changes with StatReloader
+INFO 2025-09-10 02:12:34,392 autoreload 2580 24232 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\serializers.py changed, reloading.
+INFO 2025-09-10 02:12:36,105 autoreload 6352 27696 Watching for file changes with StatReloader
+INFO 2025-09-10 02:13:08,160 autoreload 6352 27696 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\views.py changed, reloading.
+INFO 2025-09-10 02:13:10,113 autoreload 26808 2460 Watching for file changes with StatReloader
+INFO 2025-09-10 02:13:28,125 autoreload 26808 2460 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\urls.py changed, reloading.
+INFO 2025-09-10 02:13:30,560 autoreload 11308 6324 Watching for file changes with StatReloader
+INFO 2025-09-10 02:14:53,278 autoreload 11308 6324 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\models.py changed, reloading.
+INFO 2025-09-10 02:14:55,270 autoreload 24012 20544 Watching for file changes with StatReloader
+INFO 2025-09-10 02:14:59,526 autoreload 24012 20544 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\serializers.py changed, reloading.
+INFO 2025-09-10 02:15:01,467 autoreload 28524 21708 Watching for file changes with StatReloader
+INFO 2025-09-10 02:15:09,845 autoreload 28524 21708 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\views.py changed, reloading.
+INFO 2025-09-10 02:15:12,114 autoreload 27768 10968 Watching for file changes with StatReloader
+INFO 2025-09-10 02:17:25,719 autoreload 27768 10968 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\gamification\serializers.py changed, reloading.
+INFO 2025-09-10 02:17:27,822 autoreload 26008 9728 Watching for file changes with StatReloader
+INFO 2025-09-10 02:17:56,716 basehttp 26008 15628 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-10 02:17:57,630 basehttp 26008 15628 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 02:22:53,016 basehttp 26008 22848 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:22:53,043 basehttp 26008 22848 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:28:39,683 basehttp 26008 25220 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:28:39,702 basehttp 26008 25220 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:31:56,768 basehttp 26008 12116 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:31:56,793 basehttp 26008 12116 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:32:53,694 basehttp 26008 20708 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:32:53,714 basehttp 26008 20708 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 02:33:17,359 basehttp 26008 6968 "OPTIONS /api/v1/challenges/challenges/2/ HTTP/1.1" 200 0
+INFO 2025-09-10 02:33:17,484 basehttp 26008 6968 "GET /api/v1/challenges/challenges/2/ HTTP/1.1" 200 1981
+WARNING 2025-09-10 03:39:21,346 log 26008 26340 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 03:39:21,356 basehttp 26008 26340 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 03:39:21,362 log 26008 26340 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 03:39:21,362 basehttp 26008 26340 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+INFO 2025-09-10 03:39:21,374 basehttp 26008 26340 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-10 03:39:21,543 log 26008 26340 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 03:39:21,543 basehttp 26008 26340 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-10 03:39:21,554 log 26008 27368 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 03:39:21,560 basehttp 26008 27368 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-10 03:40:47,087 basehttp 26008 11808 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 03:42:06,774 basehttp 26008 5868 "GET /api/v1/challenges/challenges/2/ HTTP/1.1" 200 1981
+INFO 2025-09-10 03:45:42,028 basehttp 26008 19784 "OPTIONS /api/v1/challenges/challenges/1/ HTTP/1.1" 200 0
+INFO 2025-09-10 03:45:42,077 basehttp 26008 19784 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-10 03:55:03,200 autoreload 26008 9728 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\models.py changed, reloading.
+INFO 2025-09-10 03:55:06,623 autoreload 11444 24196 Watching for file changes with StatReloader
+INFO 2025-09-10 03:55:28,786 autoreload 11444 24196 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-10 03:55:30,580 autoreload 9936 27260 Watching for file changes with StatReloader
+INFO 2025-09-10 03:55:32,799 autoreload 9936 27260 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-10 03:55:34,596 autoreload 14364 27948 Watching for file changes with StatReloader
+INFO 2025-09-10 03:58:40,906 autoreload 14364 27948 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-10 03:58:43,143 autoreload 3860 17216 Watching for file changes with StatReloader
+INFO 2025-09-10 03:58:47,198 autoreload 3860 17216 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-10 03:58:49,159 autoreload 10368 23204 Watching for file changes with StatReloader
+INFO 2025-09-10 03:59:03,444 autoreload 10368 23204 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-10 03:59:05,778 autoreload 27384 7056 Watching for file changes with StatReloader
+INFO 2025-09-10 03:59:07,747 autoreload 27384 7056 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\views.py changed, reloading.
+INFO 2025-09-10 03:59:09,595 autoreload 24728 27176 Watching for file changes with StatReloader
+INFO 2025-09-10 04:15:45,133 autoreload 20700 25872 Watching for file changes with StatReloader
+WARNING 2025-09-10 04:15:59,468 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:15:59,468 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:15:59,468 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:15:59,468 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:00,276 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:00,278 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:00,281 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:00,283 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:00,930 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:00,932 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:00,937 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:00,937 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:01,510 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:01,513 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:01,517 log 20700 19188 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:01,520 basehttp 20700 19188 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:16:02,928 log 20700 5936 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:16:02,930 basehttp 20700 5936 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+INFO 2025-09-10 04:30:17,884 autoreload 26000 5868 Watching for file changes with StatReloader
+WARNING 2025-09-10 04:30:23,571 log 26000 7684 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:30:23,573 basehttp 26000 7684 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:30:23,576 log 26000 7684 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:30:23,578 basehttp 26000 7684 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:30:24,627 log 26000 7684 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:30:24,629 basehttp 26000 7684 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:30:25,414 log 26000 7684 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:30:25,414 basehttp 26000 7684 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+WARNING 2025-09-10 04:30:26,027 log 26000 7684 Unauthorized: /api/v1/challenges/challenge-data/
+WARNING 2025-09-10 04:30:26,027 basehttp 26000 7684 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 401 58
+INFO 2025-09-10 04:30:43,105 basehttp 26000 6104 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-10 04:30:43,985 basehttp 26000 6104 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 04:30:46,795 basehttp 26000 6104 "OPTIONS /api/v1/challenges/challenge-data/ HTTP/1.1" 200 0
+INFO 2025-09-10 04:30:46,840 basehttp 26000 6104 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:30:46,868 basehttp 26000 6104 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:31:03,200 basehttp 26000 24732 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-10 04:31:25,564 basehttp 26000 7548 "OPTIONS /api/v1/challenges/carbon-footprint/ HTTP/1.1" 200 0
+INFO 2025-09-10 04:31:25,614 basehttp 26000 7548 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 813
+INFO 2025-09-10 04:31:31,463 basehttp 26000 7548 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:31:31,489 basehttp 26000 7548 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:34:12,054 basehttp 26000 27436 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 801
+INFO 2025-09-10 04:35:40,640 basehttp 26000 27436 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 738
+INFO 2025-09-10 04:36:27,950 basehttp 26000 21780 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:36:27,966 basehttp 26000 21780 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 696
+INFO 2025-09-10 04:38:19,378 basehttp 26000 23160 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-10 04:38:19,378 basehttp 26000 17652 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-10 04:38:19,406 basehttp 26000 23160 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 04:38:19,427 basehttp 26000 23160 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 04:40:39,972 basehttp 26000 23140 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-10 04:40:59,885 basehttp 26000 23140 "POST /api/v1/challenges/carbon-footprint/ HTTP/1.1" 201 738
+INFO 2025-09-10 04:43:23,584 autoreload 26000 5868 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\models.py changed, reloading.
+INFO 2025-09-10 04:43:26,744 autoreload 10580 21244 Watching for file changes with StatReloader
+INFO 2025-09-10 04:44:44,059 autoreload 10580 21244 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\challenges\serializers.py changed, reloading.
+INFO 2025-09-10 04:44:46,233 autoreload 27332 11532 Watching for file changes with StatReloader
+INFO 2025-09-10 04:52:37,576 basehttp 27332 20728 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 04:52:37,616 basehttp 27332 20728 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 04:52:41,517 basehttp 27332 20728 "GET /api/v1/challenges/challenges/1/ HTTP/1.1" 200 1910
+INFO 2025-09-10 04:56:44,364 basehttp 27332 22044 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 04:56:44,387 basehttp 27332 22044 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 04:59:22,356 basehttp 27332 24496 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:00:04,130 autoreload 25580 8992 Watching for file changes with StatReloader
+INFO 2025-09-10 05:02:34,162 basehttp 25580 24688 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 05:02:34,162 basehttp 25580 27976 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:02:34,233 basehttp 25580 27976 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 05:02:34,242 basehttp 25580 24688 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:02:44,470 basehttp 25580 28268 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:02:53,910 basehttp 25580 27172 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:11:32,370 basehttp 25580 23008 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:11:32,421 basehttp 25580 23008 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 05:12:49,827 basehttp 25580 24412 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 05:12:49,850 basehttp 25580 24412 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 05:17:48,724 basehttp 25580 2800 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 07:40:05,568 basehttp 25580 12028 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+INFO 2025-09-10 07:40:05,584 basehttp 25580 1148 "OPTIONS /api/v1/users/me/ HTTP/1.1" 200 0
+WARNING 2025-09-10 07:40:05,655 log 25580 1148 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 07:40:05,655 basehttp 25580 1148 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 07:40:05,663 log 25580 1148 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 07:40:05,663 basehttp 25580 1148 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+INFO 2025-09-10 07:40:05,663 basehttp 25580 12028 "OPTIONS /api/v1/auth/token/refresh/ HTTP/1.1" 200 0
+WARNING 2025-09-10 07:40:05,783 log 25580 12028 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 07:40:05,784 basehttp 25580 12028 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+WARNING 2025-09-10 07:40:05,834 log 25580 1148 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 07:40:05,835 basehttp 25580 1148 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 12936
+INFO 2025-09-10 07:40:18,769 basehttp 25580 28428 "OPTIONS /api/v1/auth/login/ HTTP/1.1" 200 0
+INFO 2025-09-10 07:40:19,957 basehttp 25580 28428 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 07:40:28,717 basehttp 25580 5940 "OPTIONS /api/v1/challenges/challenge-data/ HTTP/1.1" 200 0
+INFO 2025-09-10 07:40:28,717 basehttp 25580 25516 "OPTIONS /api/v1/challenges/challenge-data/ HTTP/1.1" 200 0
+INFO 2025-09-10 07:40:28,809 basehttp 25580 25516 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 07:40:28,841 basehttp 25580 25516 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 07:41:04,233 basehttp 25580 25136 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 07:41:04,275 basehttp 25580 25136 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 07:42:03,511 basehttp 25580 28596 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 07:42:03,545 basehttp 25580 28596 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 08:14:02,300 basehttp 25580 19580 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 08:14:02,334 basehttp 25580 19580 "GET /api/v1/users/me/ HTTP/1.1" 200 537

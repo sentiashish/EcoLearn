@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { apiService } from '@/services/api';
+import { apiService } from '../services/api'; // Fixed import path
 import toast from 'react-hot-toast';
 import {
   CalculatorIcon,

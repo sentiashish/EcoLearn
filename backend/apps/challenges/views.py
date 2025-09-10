@@ -680,3 +680,100 @@ class CarbonFootprintViewSet(viewsets.ModelViewSet):
             'world_average': 4000,  # kg CO2 per person per year
             'latest_calculation': CarbonFootprintSerializer(latest).data if latest else None
         })
+    
+
+# Add to the end of apps/challenges/views.py
+# Update the imports at the top of apps/challenges/views.py
+
+from rest_framework import viewsets, status, permissions, serializers
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated  # Add this import
+from django.db.models import Q, Avg, Count, F, Max
+from django.utils import timezone
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
+from django.contrib.auth import get_user_model
+from django.core.cache import cache
+from .models import (
+    Challenge, Submission, ChallengeRating,
+    ChallengeFavorite, ChallengeDiscussion, CarbonFootprint,
+    ChallengeData, ChallengeSubmission  # Add these new models
+)
+from .serializers import (
+    ChallengeListSerializer, ChallengeDetailSerializer, ChallengeCreateSerializer,
+    SubmissionSerializer, SubmissionCreateSerializer, SubmissionDetailSerializer,
+    ChallengeRatingSerializer, ChallengeFavoriteSerializer,
+    ChallengeDiscussionSerializer, LeaderboardSerializer,
+    CarbonFootprintSerializer, CarbonFootprintCreateSerializer,
+    ChallengeDataSerializer, ChallengeSubmissionSerializer, ChallengeSubmissionCreateSerializer  # Add these new serializers
+)
+from apps.users.permissions import IsTeacherOrReadOnly, IsOwnerOrReadOnly
+
+from .models import ChallengeData, ChallengeSubmission
+from .serializers import ChallengeDataSerializer, ChallengeSubmissionSerializer, ChallengeSubmissionCreateSerializer
+
+class ChallengeDataViewSet(viewsets.ReadOnlyModelViewSet):
+    """ViewSet for challenge data."""
+    
+    serializer_class = ChallengeDataSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        """Get active challenges."""
+        return ChallengeData.objects.filter(is_active=True)
+    
+    def get_serializer_context(self):
+        """Add request to serializer context."""
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        return context
+
+
+class ChallengeSubmissionViewSet(viewsets.ModelViewSet):
+    """ViewSet for challenge submissions."""
+    
+    permission_classes = [IsAuthenticated]
+    
+    def get_serializer_class(self):
+        """Return appropriate serializer based on action."""
+        if self.action == 'create':
+            return ChallengeSubmissionCreateSerializer
+        return ChallengeSubmissionSerializer
+    
+    def get_queryset(self):
+        """Get user's submissions."""
+        return ChallengeSubmission.objects.filter(user=self.request.user)
+    
+    @action(detail=False, methods=['get'])
+    def by_challenge(self, request):
+        """Get user's submissions for a specific challenge."""
+        challenge_id = request.query_params.get('challenge_id')
+        if not challenge_id:
+            return Response(
+                {'error': 'challenge_id parameter is required'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        submissions = self.get_queryset().filter(challenge_id=challenge_id)
+        serializer = self.get_serializer(submissions, many=True)
+        return Response(serializer.data)
+    
+    @action(detail=False, methods=['get'])
+    def best_scores(self, request):
+        """Get user's best scores for all challenges."""
+        user = request.user
+        challenges = ChallengeData.objects.filter(is_active=True)
+        
+        best_scores = {}
+        for challenge in challenges:
+            best_score = ChallengeSubmission.get_best_score(user, challenge)
+            if best_score is not None:
+                best_scores[challenge.id] = {
+                    'challenge_id': challenge.id,
+                    'challenge_title': challenge.title,
+                    'best_score': best_score,
+                    'is_completed': ChallengeSubmission.is_completed_by_user(user, challenge)
+                }
+        
+        return Response(best_scores)

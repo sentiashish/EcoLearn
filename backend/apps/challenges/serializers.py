@@ -549,3 +549,103 @@ class CarbonFootprintCreateSerializer(serializers.ModelSerializer):
         except Challenge.DoesNotExist:
             raise serializers.ValidationError("Carbon Footprint Calculator challenge not found")
         return super().create(validated_data)
+
+
+# Add to the end of apps/challenges/serializers.py
+
+from .models import ChallengeData, ChallengeSubmission
+
+class ChallengeDataSerializer(serializers.ModelSerializer):
+    """Serializer for challenge data with user-specific information."""
+    
+    is_completed = serializers.SerializerMethodField()
+    best_score = serializers.SerializerMethodField()
+    best_emission = serializers.SerializerMethodField()  # Add this field
+    
+    class Meta:
+        model = ChallengeData
+        fields = [
+            'id', 'title', 'description', 'difficulty', 'category',
+            'points', 'submissions', 'success_rate', 'time_limit', 
+            'tags', 'is_completed', 'best_score', 'best_emission'  # Add best_emission
+        ]
+    
+    def get_is_completed(self, obj):
+        """Check if current user has completed this challenge."""
+        request = self.context.get('request')
+        if request and request.user.is_authenticated:
+            return ChallengeSubmission.is_completed_by_user(request.user, obj)
+        return False
+    
+    def get_best_score(self, obj):
+        """Get current user's best score for this challenge."""
+        request = self.context.get('request')
+        if request and request.user.is_authenticated:
+            return ChallengeSubmission.get_best_score(request.user, obj)
+        return None
+    
+    def get_best_emission(self, obj):
+        """Get current user's best (lowest) emission for carbon footprint challenge."""
+        request = self.context.get('request')
+        if request and request.user.is_authenticated and obj.id == 1:  # Carbon Footprint Calculator
+            return obj.get_best_emission(request.user)
+        return None
+
+
+class ChallengeSubmissionSerializer(serializers.ModelSerializer):
+    """Serializer for challenge submissions."""
+    
+    challenge_title = serializers.CharField(source='challenge.title', read_only=True)
+    user_email = serializers.CharField(source='user.email', read_only=True)
+    
+    class Meta:
+        model = ChallengeSubmission
+        fields = [
+            'id', 'challenge', 'challenge_title', 'user_email', 
+            'score', 'is_completed', 'submitted_at'
+        ]
+        read_only_fields = ['user']
+    
+    def create(self, validated_data):
+        """Create submission with user from request."""
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
+
+
+class ChallengeSubmissionCreateSerializer(serializers.ModelSerializer):
+    """Serializer for creating challenge submissions."""
+    
+    challenge_id = serializers.IntegerField(write_only=True)
+    
+    class Meta:
+        model = ChallengeSubmission
+        fields = ['challenge_id', 'score', 'is_completed']
+    
+    def validate_challenge_id(self, value):
+        """Validate challenge exists."""
+        try:
+            ChallengeData.objects.get(id=value)
+            return value
+        except ChallengeData.DoesNotExist:
+            raise serializers.ValidationError("Invalid challenge ID.")
+    
+    def create(self, validated_data):
+        """Create submission."""
+        challenge_id = validated_data.pop('challenge_id')
+        challenge = ChallengeData.objects.get(id=challenge_id)
+        
+        validated_data['challenge'] = challenge
+        validated_data['user'] = self.context['request'].user
+        
+        # Update challenge statistics
+        challenge.submissions += 1
+        if validated_data.get('is_completed'):
+            # Recalculate success rate
+            completed_submissions = ChallengeSubmission.objects.filter(
+                challenge=challenge, 
+                is_completed=True
+            ).count() + 1
+            challenge.success_rate = (completed_submissions / challenge.submissions) * 100
+        challenge.save()
+        
+        return super().create(validated_data)

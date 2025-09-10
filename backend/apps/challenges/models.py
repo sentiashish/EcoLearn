@@ -661,3 +661,127 @@ class CarbonFootprint(models.Model):
             recommendations.append("Great job! You're already living sustainably")
             
         self.recommendations = recommendations
+
+
+# Add to the end of apps/challenges/models.py
+
+class ChallengeData(models.Model):
+    """Model for storing challenge information displayed on the challenges page."""
+    
+    class DifficultyChoices(models.TextChoices):
+        EASY = 'Easy', 'Easy'
+        MEDIUM = 'Medium', 'Medium'
+        HARD = 'Hard', 'Hard'
+    
+    # Basic Information
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    difficulty = models.CharField(
+        max_length=10,
+        choices=DifficultyChoices.choices,
+        default=DifficultyChoices.EASY
+    )
+    category = models.CharField(max_length=100)
+    points = models.PositiveIntegerField(default=100)
+    submissions = models.PositiveIntegerField(default=0)
+    success_rate = models.FloatField(default=0.0)
+    time_limit = models.CharField(max_length=50)
+    tags = models.JSONField(default=list)
+    
+    # Status tracking
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['id']
+        verbose_name = 'Challenge Data'
+        verbose_name_plural = 'Challenge Data'
+    
+    def __str__(self):
+        return self.title
+    
+
+    def increment_submissions(self):
+        """Increment the submissions count by 1."""
+        self.submissions = models.F('submissions') + 1
+        self.save(update_fields=['submissions'])
+        self.refresh_from_db()
+    
+    def get_best_emission(self, user=None):
+        """Get the best (lowest) emission for this challenge, optionally for a specific user."""
+        from .models import CarbonFootprint
+        
+        if self.id == 1:  # Carbon Footprint Calculator challenge
+            if user:
+                # Get user's best emission
+                best_footprint = CarbonFootprint.objects.filter(
+                    user=user
+                ).order_by('total_emissions').first()
+            else:
+                # Get global best emission
+                best_footprint = CarbonFootprint.objects.order_by(
+                    'total_emissions'
+                ).first()
+            
+            return best_footprint.total_emissions if best_footprint else None
+        return None
+
+
+class ChallengeSubmission(models.Model):
+    """Model for tracking user submissions to challenges."""
+    
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='challenge_submissions'
+    )
+    challenge = models.ForeignKey(
+        ChallengeData,
+        on_delete=models.CASCADE,
+        related_name='user_submissions'
+    )
+    score = models.PositiveIntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
+    is_completed = models.BooleanField(default=False)
+    
+    # For carbon footprint calculator
+    carbon_footprint_data = models.OneToOneField(
+        CarbonFootprint,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='submission'
+    )
+    
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['-submitted_at']
+        unique_together = ['user', 'challenge', 'submitted_at']
+        indexes = [
+            models.Index(fields=['user', 'challenge']),
+            models.Index(fields=['challenge', 'score']),
+        ]
+    
+    def __str__(self):
+        return f"{self.user.email} - {self.challenge.title}: {self.score}"
+    
+    @classmethod
+    def get_best_score(cls, user, challenge):
+        """Get user's best score for a challenge."""
+        best_submission = cls.objects.filter(
+            user=user, 
+            challenge=challenge
+        ).order_by('-score').first()
+        return best_submission.score if best_submission else None
+    
+    @classmethod
+    def is_completed_by_user(cls, user, challenge):
+        """Check if user has completed the challenge."""
+        return cls.objects.filter(
+            user=user, 
+            challenge=challenge, 
+            is_completed=True
+        ).exists()

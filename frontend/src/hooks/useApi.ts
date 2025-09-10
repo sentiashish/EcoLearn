@@ -1,6 +1,44 @@
+import { useState, useEffect, useCallback } from 'react';  // Remove React import
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiService } from '../services/api';
 import { toast } from 'react-hot-toast';
+
+// Add these interfaces at the top of the file, after the imports
+interface Example {
+  input: string;
+  output: string;
+  explanation?: string;
+}
+
+interface Hint {
+  title: string;
+  content: string;
+}
+
+interface Submission {
+  id: number;
+  user: string;
+  status: 'pending' | 'approved' | 'rejected';
+  submitted_at: string;
+  feedback?: string;
+  score?: number;
+}
+
+interface Challenge {
+  id: number;
+  title: string;
+  description: string;
+  difficulty: string;
+  category: string;
+  examples?: Example[];
+  hints?: Hint[];
+  submissions?: Submission[];
+  // Add other properties as needed
+}
+
+
+// Add the missing API_BASE_URL constant
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api/v1';
 
 // Auth hooks
 export const useLogin = () => {
@@ -57,11 +95,11 @@ export const useUpdateProfile = () => {
   });
 };
 
-// Content hooks
+// Content hooks - Fix the queryFn parameter issue
 export const useLessons = (params?: { page?: number; difficulty?: string; search?: string }) => {
   return useQuery({
     queryKey: ['lessons', params],
-    queryFn: () => apiService.getContent(params),
+    queryFn: () => apiService.getContent(params), // Keep the arrow function
     staleTime: 2 * 60 * 1000, // 2 minutes
   });
 };
@@ -158,7 +196,7 @@ export const useSubmitChallenge = () => {
   return useMutation({
     mutationFn: ({ id, formData }: { id: number; formData: FormData }) => 
       apiService.submitChallenge(id, formData),
-    onSuccess: (data, variables) => {
+    onSuccess: (_data, variables) => { // Fix: add underscore to unused parameter
       queryClient.invalidateQueries({ queryKey: ['challenge', variables.id] });
       queryClient.invalidateQueries({ queryKey: ['challenges'] });
       queryClient.invalidateQueries({ queryKey: ['challenge-submissions'] });
@@ -179,8 +217,116 @@ export const useChallengeSubmissions = () => {
   });
 };
 
-// Gamification hooks
-export const useLeaderboard = (params?: { scope?: string; period?: string; page?: number }) => {
+// Challenge Data hooks (NEW)
+export const useChallengeData = () => {
+  const [challenges, setChallenges] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchChallenges = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      console.log('Fetching challenges from:', `${API_BASE_URL}/challenges/challenge-data/`);
+      
+      const response = await apiService.getChallengeData();
+      console.log('Raw API response:', response);
+      
+      // Handle both paginated and non-paginated responses
+      const challengeData = response.results || response || [];
+      console.log('Processed challenge data:', challengeData);
+      
+      setChallenges(challengeData);
+    } catch (err: any) {
+      console.error('Detailed error:', err);
+      console.error('Error response:', err.response);
+      console.error('Error message:', err.message);
+      
+      const errorMessage = err.response?.data?.detail || 
+                          err.response?.data?.message || 
+                          err.message || 
+                          'Failed to fetch challenges';
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchChallenges();
+  }, [fetchChallenges]);
+
+  return { challenges, loading, error, refetch: fetchChallenges };
+};
+
+export const useChallengeSubmissionData = () => {
+  const [submissions, setSubmissions] = useState<any[]>([]);
+  const [bestScores, setBestScores] = useState<any>({});
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const createSubmission = useCallback(async (data: {
+    challenge_id: number;
+    score: number;
+    is_completed: boolean;
+  }) => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await apiService.createChallengeSubmission(data);
+      await fetchBestScores(); // Refresh best scores
+      return response;
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to create submission');
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const fetchBestScores = useCallback(async () => {
+    try {
+      const response = await apiService.getUserBestScores();
+      setBestScores(response);
+    } catch (err: any) {
+      console.error('Error fetching best scores:', err);
+    }
+  }, []);
+
+  const fetchSubmissions = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await apiService.getUserChallengeSubmissions();
+      setSubmissions(response.results || response);
+      await fetchBestScores();
+    } catch (err: any) {
+      setError(err.response?.data?.message || 'Failed to fetch submissions');
+    } finally {
+      setLoading(false);
+    }
+  }, [fetchBestScores]);
+
+  useEffect(() => {
+    fetchSubmissions();
+  }, [fetchSubmissions]);
+
+  return { 
+    submissions, 
+    bestScores, 
+    loading, 
+    error, 
+    createSubmission, 
+    refetch: fetchSubmissions 
+  };
+};
+
+// Gamification hooks - Fix the type issue with period parameter
+export const useLeaderboard = (params?: { 
+  scope?: string; 
+  period?: 'week' | 'month' | 'all'; // Fix: restrict to specific string literals
+  page?: number; 
+}) => {
   return useQuery({
     queryKey: ['leaderboard', params],
     queryFn: () => apiService.getLeaderboard(params),
@@ -219,7 +365,7 @@ export const useReviewSubmission = () => {
   return useMutation({
     mutationFn: ({ id, status, feedback }: { id: number; status: 'approved' | 'rejected'; feedback: string }) => 
       apiService.reviewSubmission(id, status, feedback),
-    onSuccess: (data, variables) => {
+    onSuccess: (_data, variables) => { // Fix: add underscore to unused parameter
       queryClient.invalidateQueries({ queryKey: ['pending-submissions'] });
       queryClient.invalidateQueries({ queryKey: ['challenge-submissions'] });
       
