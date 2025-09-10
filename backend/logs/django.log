@@ -2181,3 +2181,59 @@ INFO 2025-09-10 07:42:03,511 basehttp 25580 28596 "GET /api/v1/challenges/challe
 INFO 2025-09-10 07:42:03,545 basehttp 25580 28596 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
 INFO 2025-09-10 08:14:02,300 basehttp 25580 19580 "GET /api/v1/users/me/ HTTP/1.1" 200 537
 INFO 2025-09-10 08:14:02,334 basehttp 25580 19580 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 08:31:21,960 autoreload 25580 8992 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:31:25,916 autoreload 11052 25588 Watching for file changes with StatReloader
+INFO 2025-09-10 08:37:31,358 autoreload 11052 25588 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:37:34,547 autoreload 23640 24552 Watching for file changes with StatReloader
+INFO 2025-09-10 08:37:42,622 autoreload 23640 24552 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:37:44,507 autoreload 2740 23220 Watching for file changes with StatReloader
+INFO 2025-09-10 08:38:09,317 autoreload 2740 23220 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:38:11,012 autoreload 22020 7396 Watching for file changes with StatReloader
+INFO 2025-09-10 08:38:17,095 autoreload 22020 7396 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:38:18,832 autoreload 16748 6960 Watching for file changes with StatReloader
+INFO 2025-09-10 08:38:27,257 autoreload 16748 6960 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:38:29,130 autoreload 19816 16260 Watching for file changes with StatReloader
+INFO 2025-09-10 08:42:22,532 autoreload 19816 16260 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:42:25,612 autoreload 27288 5036 Watching for file changes with StatReloader
+INFO 2025-09-10 08:43:08,405 autoreload 27288 5036 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:43:10,290 autoreload 2092 19308 Watching for file changes with StatReloader
+INFO 2025-09-10 08:43:25,532 autoreload 2092 19308 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:43:27,257 autoreload 24004 28284 Watching for file changes with StatReloader
+INFO 2025-09-10 08:45:06,790 autoreload 24004 28284 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:45:09,161 autoreload 4860 26648 Watching for file changes with StatReloader
+WARNING 2025-09-10 08:46:08,818 log 4860 11440 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 08:46:08,821 basehttp 4860 11440 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 08:46:08,824 log 4860 11440 Unauthorized: /api/v1/users/me/
+WARNING 2025-09-10 08:46:08,824 basehttp 4860 11440 "GET /api/v1/users/me/ HTTP/1.1" 401 183
+WARNING 2025-09-10 08:46:08,942 log 4860 11440 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 08:46:08,942 basehttp 4860 11440 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 13494
+WARNING 2025-09-10 08:46:08,965 log 4860 11440 Not Found: /api/v1/auth/token/refresh/
+WARNING 2025-09-10 08:46:08,965 basehttp 4860 11440 "POST /api/v1/auth/token/refresh/ HTTP/1.1" 404 13494
+INFO 2025-09-10 08:46:21,636 basehttp 4860 12092 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 08:46:39,038 basehttp 4860 12092 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 08:46:39,057 basehttp 4860 12092 "GET /api/v1/users/me/ HTTP/1.1" 200 537
+INFO 2025-09-10 08:50:41,340 autoreload 4860 26648 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:50:44,410 autoreload 12920 18544 Watching for file changes with StatReloader
+INFO 2025-09-10 08:51:33,482 autoreload 12920 18544 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:51:35,287 autoreload 15604 2420 Watching for file changes with StatReloader
+INFO 2025-09-10 08:51:45,976 autoreload 15604 2420 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:51:48,046 autoreload 26140 27504 Watching for file changes with StatReloader
+INFO 2025-09-10 08:53:30,737 autoreload 26140 27504 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:53:33,112 autoreload 23508 11000 Watching for file changes with StatReloader
+INFO 2025-09-10 08:53:36,482 autoreload 23508 11000 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:53:38,135 autoreload 27636 8864 Watching for file changes with StatReloader
+INFO 2025-09-10 08:53:42,318 autoreload 27636 8864 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:53:44,153 autoreload 21396 25340 Watching for file changes with StatReloader
+INFO 2025-09-10 08:53:52,853 autoreload 21396 25340 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:53:54,599 autoreload 16912 22204 Watching for file changes with StatReloader
+INFO 2025-09-10 08:53:58,429 autoreload 16912 22204 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\urls.py changed, reloading.
+INFO 2025-09-10 08:54:00,254 autoreload 916 6324 Watching for file changes with StatReloader
+INFO 2025-09-10 08:54:40,240 autoreload 916 6324 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:54:42,032 autoreload 15968 9268 Watching for file changes with StatReloader
+INFO 2025-09-10 08:54:45,309 autoreload 15968 9268 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 08:54:47,325 autoreload 26812 10828 Watching for file changes with StatReloader
+INFO 2025-09-10 08:54:59,257 basehttp 26812 9708 "POST /api/v1/auth/login/ HTTP/1.1" 200 757
+INFO 2025-09-10 09:00:04,757 autoreload 26812 10828 C:\Users\aswin\Documents\Sih_website\EcoLearn\backend\apps\users\views.py changed, reloading.
+INFO 2025-09-10 09:00:07,843 autoreload 6944 11140 Watching for file changes with StatReloader
+INFO 2025-09-10 09:00:08,919 basehttp 6944 17900 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741
+INFO 2025-09-10 09:00:08,942 basehttp 6944 17900 "GET /api/v1/challenges/challenge-data/ HTTP/1.1" 200 741

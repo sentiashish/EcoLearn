@@ -11,7 +11,10 @@ import {
   ArrowTrendingUpIcon,
   CalendarDaysIcon,
   GlobeAltIcon,
-  SparklesIcon
+  SparklesIcon,
+  PlusIcon,
+  BeakerIcon,
+  LightBulbIcon
 } from '@heroicons/react/24/outline';
 import LearningDashboard from '../components/LearningDashboard';
 import { Line, Doughnut, Bar } from 'react-chartjs-2';
@@ -74,12 +77,82 @@ interface Goal {
   deadline: string;
 }
 
+interface ImpactStats {
+  carbonSaved: number;
+  waterSaved: number;
+  ecoActions: number;
+}
+
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
   const [stats, setStats] = useState<UserStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedPeriod, setSelectedPeriod] = useState('week');
   const [showLearningDashboard, setShowLearningDashboard] = useState(false);
+  
+  // Collective Impact State
+  const [impactStats, setImpactStats] = useState<ImpactStats>({
+    carbonSaved: 0,
+    waterSaved: 0,
+    ecoActions: 0
+  });
+
+  // Load impact data from localStorage
+  useEffect(() => {
+    const savedImpact = localStorage.getItem('ecoImpactStats');
+    if (savedImpact) {
+      setImpactStats(JSON.parse(savedImpact));
+    }
+  }, []);
+
+  // Save impact data to localStorage
+  const saveImpactData = (newStats: ImpactStats) => {
+    setImpactStats(newStats);
+    localStorage.setItem('ecoImpactStats', JSON.stringify(newStats));
+  };
+
+  // Add impact functions
+  const addCarbonSaved = () => {
+    const newStats = { ...impactStats, carbonSaved: impactStats.carbonSaved + 1 };
+    saveImpactData(newStats);
+  };
+
+  const addWaterSaved = () => {
+    const newStats = { ...impactStats, waterSaved: impactStats.waterSaved + 1 };
+    saveImpactData(newStats);
+  };
+
+  const addEcoAction = () => {
+    const newStats = { ...impactStats, ecoActions: impactStats.ecoActions + 1 };
+    saveImpactData(newStats);
+  };
+
+  // Dynamic messages
+  const getRandomMessage = (type: string, value: number) => {
+    const messages = {
+      carbon: [
+        `Amazing! You've saved ${value} kg of CO2!`,
+        `Keep it up! ${value} kg of carbon saved!`,
+        `Fantastic work! ${value} kg less CO2 in the atmosphere!`,
+        `You're making a difference! ${value} kg of carbon reduced!`
+      ],
+      water: [
+        `Great job! You've conserved ${value} liters of water!`,
+        `Excellent! ${value} liters of water saved!`,
+        `Keep conserving! ${value} liters preserved!`,
+        `Water hero! ${value} liters saved for the planet!`
+      ],
+      action: [
+        `Awesome! You've completed ${value} eco-actions!`,
+        `Keep going! ${value} green actions taken!`,
+        `Environmental champion! ${value} actions completed!`,
+        `Making a difference with ${value} eco-friendly actions!`
+      ]
+    };
+    
+    const typeMessages = messages[type as keyof typeof messages];
+    return typeMessages[Math.floor(Math.random() * typeMessages.length)];
+  };
 
   useEffect(() => {
     // Mock data - replace with actual API calls
@@ -353,6 +426,94 @@ const Dashboard: React.FC = () => {
             <h3 className="text-lg font-semibold text-gray-900 mb-6">Learning Categories</h3>
             <div className="h-64">
               <Doughnut data={categoryChartData} options={doughnutOptions} />
+            </div>
+          </div>
+        </div>
+
+        {/* Collective Impact Dashboard */}
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            🌍 Your Collective Environmental Impact
+          </h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Carbon Saved */}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 text-center border border-green-200">
+              <div className="h-16 w-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BeakerIcon className="h-8 w-8 text-white" />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">Carbon Saved</h4>
+              <p className="text-3xl font-bold text-green-600 mb-4">{impactStats.carbonSaved} kg</p>
+              <button
+                onClick={addCarbonSaved}
+                className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200 flex items-center gap-2 mx-auto"
+              >
+                <PlusIcon className="h-4 w-4" />
+                Add 1kg
+              </button>
+            </div>
+
+            {/* Water Saved */}
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-xl p-6 text-center border border-blue-200">
+              <div className="h-16 w-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                💧
+              </div>
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">Water Saved</h4>
+              <p className="text-3xl font-bold text-blue-600 mb-4">{impactStats.waterSaved} L</p>
+              <button
+                onClick={addWaterSaved}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center gap-2 mx-auto"
+              >
+                <PlusIcon className="h-4 w-4" />
+                Add 1L
+              </button>
+            </div>
+
+            {/* Eco Actions */}
+            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-xl p-6 text-center border border-yellow-200">
+              <div className="h-16 w-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <LightBulbIcon className="h-8 w-8 text-white" />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">Eco Actions</h4>
+              <p className="text-3xl font-bold text-yellow-600 mb-4">{impactStats.ecoActions}</p>
+              <button
+                onClick={addEcoAction}
+                className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors duration-200 flex items-center gap-2 mx-auto"
+              >
+                <PlusIcon className="h-4 w-4" />
+                Add Action
+              </button>
+            </div>
+          </div>
+
+          {/* Impact Messages */}
+          <div className="bg-gradient-to-r from-emerald-50 to-blue-50 rounded-xl p-6 border border-emerald-200">
+            <h4 className="text-lg font-semibold text-gray-800 mb-4 text-center">🎉 Your Impact Summary</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div className="p-4 bg-white rounded-lg shadow-sm">
+                <p className="text-sm text-green-600 font-medium">
+                  {impactStats.carbonSaved > 0 
+                    ? getRandomMessage('carbon', impactStats.carbonSaved)
+                    : "Start saving carbon to see your impact!"
+                  }
+                </p>
+              </div>
+              <div className="p-4 bg-white rounded-lg shadow-sm">
+                <p className="text-sm text-blue-600 font-medium">
+                  {impactStats.waterSaved > 0 
+                    ? getRandomMessage('water', impactStats.waterSaved)
+                    : "Begin conserving water to track your progress!"
+                  }
+                </p>
+              </div>
+              <div className="p-4 bg-white rounded-lg shadow-sm">
+                <p className="text-sm text-yellow-600 font-medium">
+                  {impactStats.ecoActions > 0 
+                    ? getRandomMessage('action', impactStats.ecoActions)
+                    : "Complete eco-actions to make a difference!"
+                  }
+                </p>
+              </div>
             </div>
           </div>
         </div>
